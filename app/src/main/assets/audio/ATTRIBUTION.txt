@@ -1,0 +1,14 @@
+Animal voice assets — CC0 1.0
+
+mammoth.wav: Elephant voice - trumpeting by தகவலுழவன்
+Source: https://commons.wikimedia.org/wiki/File:Elephant_voice_-_trumpeting.ogg
+Public preview: https://upload.wikimedia.org/wikipedia/commons/transcoded/4/40/Elephant_voice_-_trumpeting.ogg/Elephant_voice_-_trumpeting.ogg.mp3
+License: https://creativecommons.org/publicdomain/zero/1.0/
+Processing: Public MP3 preview decoded to mono PCM16/24kHz; DC removal, peak/RMS attenuation, 20ms edge fades. No pitch shift.
+
+tiger.wav: Tiger roar female by eZZin
+Source: https://freesound.org/people/eZZin/sounds/811790/
+Public preview: https://cdn.freesound.org/previews/811/811790_2175308-hq.mp3
+License: https://creativecommons.org/publicdomain/zero/1.0/
+Processing: Public MP3 preview decoded to mono PCM16/24kHz; DC removal, peak/RMS attenuation, 20ms edge fades. No pitch shift.
+

@@ -1,0 +1,38 @@
+{
+  "gatherer": {
+    "sources": {
+      "assets/primitive-v2/residents/gatherer/gatherer-animated.glb": "b7d99a2f7b21e0e5aa79dc1458afad215d63f7354ae093048bc85c7368b0d042",
+      "assets/god-sandbox-v1/animations/gatherer-gameplay.glb": "6c25bfa47a36ea809bb9af74a7d9ca45ffa6e4190abf91741e65eacb9d4e4ee5"
+    },
+    "sha256": "d82005a3d682e6c44b0136677192303c4883fa2ee19a6dc8af670369555896e6",
+    "clips": [
+      "carry",
+      "gather",
+      "idle",
+      "walk",
+      "carry_wood",
+      "catch_rain",
+      "lash_roof",
+      "tend_fire"
+    ],
+    "geometryAndSkinUnchanged": true
+  },
+  "scout": {
+    "sources": {
+      "assets/primitive-v2/residents/scout/scout-animated.glb": "e441831ed0bc71407dfd32d29b72e03455c3a4a9f5580d1f714e679bcdde84c2",
+      "assets/god-sandbox-v1/animations/scout-gameplay.glb": "9785c5042706d7bd7d037729eb30b68f3e6fdc55d79544ff834c2e0dc0fc0fb5"
+    },
+    "sha256": "812371dfb871c65b6e4b2e694195e6fe2305c9d01f1e44921fdf5e0c8ddd4957",
+    "clips": [
+      "carry",
+      "gather",
+      "idle",
+      "walk",
+      "carry_wood",
+      "catch_rain",
+      "lash_roof",
+      "tend_fire"
+    ],
+    "geometryAndSkinUnchanged": true
+  }
+}

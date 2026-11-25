@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "spatialcraft.editor-pack-provenance/v1",
+  "managed": true,
+  "generatedAt": "2026-11-10T14:56:16.782Z",
+  "bundle": {
+    "path": "/Users/bytedance/Documents/PICOCLI/桌角文明/editor-asset/PrimitiveWorldV2/Build/PrimitiveWorldV2.bundle",
+    "digest": {
+      "algorithm": "sha256",
+      "value": "049e6658e206ac4434e025dc572bbb259e6154773e6ebfb41d6dd4ad36730d6e"
+    },
+    "scenesPath": "/Users/bytedance/Documents/PICOCLI/桌角文明/editor-asset/PrimitiveWorldV2/Build/PrimitiveWorldV2.scenes.json",
+    "scenesDigest": {
+      "algorithm": "sha256",
+      "value": "0581d083b4a1045719689d5f4b09bbfbdade2c38e792dfa77d27f03d7e14a303"
+    },
+    "entryScene": "Sources/Scenes/PrimitiveWorld.usda",
+    "runtimeSceneKey": "Scenes/PrimitiveWorld",
+    "sceneCount": 1
+  },
+  "workflow": {
+    "runId": "run-c8a4c98f-9aee-4ea6-b6ff-d998b6e03aa6",
+    "acceptedRevision": 1,
+    "sceneFingerprint": "ac6cfcaf17ef949b74bd8431a06461cfdd8ed4b1b82e39d5686c4c7ea61b8069",
+    "gateProof": {
+      "path": "sidecars/v7/138b0335a929ad3aadf44d36cd63ef8f58382c0ed74e6e95c29bda6605b18cf1.json",
+      "digest": "138b0335a929ad3aadf44d36cd63ef8f58382c0ed74e6e95c29bda6605b18cf1",
+      "bytes": 28439,
+      "mediaType": "application/json"
+    }
+  },
+  "packageGate": {
+    "status": "pass",
+    "sceneManifestWritten": true,
+    "acceptedSceneMatched": true
+  },
+  "warnings": []
+}

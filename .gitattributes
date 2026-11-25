@@ -1,0 +1,2 @@
+app/src/main/assets/managed/PrimitiveWorldV2.bundle filter=lfs diff=lfs merge=lfs -text
+app/src/main/assets/managed/CornerCivilizationScene.bundle filter=lfs diff=lfs merge=lfs -text

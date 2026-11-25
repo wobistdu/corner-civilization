@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "spatialcraft.editor-pack-provenance/v1",
+  "managed": true,
+  "generatedAt": "2026-11-10T10:23:41.262Z",
+  "bundle": {
+    "path": "/Users/bytedance/Documents/PICOCLI/桌角文明/editor-asset/src/main/res3d/CornerCivilizationScene/Build/CornerCivilizationScene.bundle",
+    "digest": {
+      "algorithm": "sha256",
+      "value": "71649fcd297a96e3097bd32b683d7053260c8e574ebcaf9bd00b1dea7e2fae02"
+    },
+    "scenesPath": "/Users/bytedance/Documents/PICOCLI/桌角文明/editor-asset/src/main/res3d/CornerCivilizationScene/Build/CornerCivilizationScene.scenes.json",
+    "scenesDigest": {
+      "algorithm": "sha256",
+      "value": "f46cd5041601e83d118e8f8018edb17b82b2864e41bc49907226cf1f906c4ce1"
+    },
+    "entryScene": "Sources/Scenes/CornerCivilization.usda",
+    "runtimeSceneKey": "Scenes/CornerCivilization",
+    "sceneCount": 1
+  },
+  "workflow": {
+    "runId": "run-19751dfa-1892-41ee-8994-17dc34a53a5e",
+    "acceptedRevision": 1,
+    "sceneFingerprint": "4307d0b0c436ab4769eed04688ef044cbfd9b9b3e0738c52e5f7ff81f93d1384",
+    "gateProof": {
+      "path": "sidecars/v7/44ee5425461596531a894cd850ae6dba2c1b116db6ae2ac0be4e936dc09936f8.json",
+      "digest": "44ee5425461596531a894cd850ae6dba2c1b116db6ae2ac0be4e936dc09936f8",
+      "bytes": 29309,
+      "mediaType": "application/json"
+    }
+  },
+  "packageGate": {
+    "status": "pass",
+    "sceneManifestWritten": true,
+    "acceptedSceneMatched": true
+  },
+  "warnings": []
+}

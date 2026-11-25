@@ -1,0 +1,845 @@
+{
+  "activeScenePath": "Sources/Scenes/Hi.usda",
+  "detail": "full",
+  "scenes": [
+    {
+      "bundlePath": "Sources/Scenes/Hi.usda",
+      "container": {
+        "appContainer": "Stage",
+        "bounded": false,
+        "contentHost": null,
+        "coordinateSystem": "right-handed, meters",
+        "editorType": "Stage",
+        "isDefault": false,
+        "showUISample": false,
+        "sizeDp": null,
+        "sizeMeters": null,
+        "source": "editor-viewport-container-settings",
+        "spaceRequirement": "FullSpace",
+        "unit": "DevicePoint",
+        "usageHint": "Use Stage for immersive unbounded 3D content."
+      },
+      "entities": [
+        {
+          "active": true,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:hi:Root/MammothPrototype",
+          "name": "MammothPrototype",
+          "parentPath": "Root",
+          "path": "Root/MammothPrototype",
+          "protocolEntityId": "entity_306898404259135528",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": true,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:hi:Root/MammothPrototype/Materials",
+          "name": "Materials",
+          "parentPath": "Root/MammothPrototype",
+          "path": "Root/MammothPrototype/Materials",
+          "protocolEntityId": "entity_306898404259135529",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": true,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:hi:Root/MammothPrototype/Materials/tripo_material_18389fb4_7048_4226_82ba_4da5e31f0c81",
+          "name": "tripo_material_18389fb4_7048_4226_82ba_4da5e31f0c81",
+          "parentPath": "Root/MammothPrototype/Materials",
+          "path": "Root/MammothPrototype/Materials/tripo_material_18389fb4_7048_4226_82ba_4da5e31f0c81",
+          "protocolEntityId": "entity_306898404259135530",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": true,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:hi:Root/MammothPrototype/tripo_mesh_18389fb4_7048_4226_82ba_4da5e31f0c81",
+          "name": "tripo_mesh_18389fb4_7048_4226_82ba_4da5e31f0c81",
+          "parentPath": "Root/MammothPrototype",
+          "path": "Root/MammothPrototype/tripo_mesh_18389fb4_7048_4226_82ba_4da5e31f0c81",
+          "protocolEntityId": "entity_306898404259135531",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": true,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:hi:Root/SabertoothPrototype",
+          "name": "SabertoothPrototype",
+          "parentPath": "Root",
+          "path": "Root/SabertoothPrototype",
+          "protocolEntityId": "entity_306898404259135562",
+          "resources": {},
+          "transform": {
+            "position": [
+              0.05999999865889549,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": true,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:hi:Root/SabertoothPrototype/Materials",
+          "name": "Materials",
+          "parentPath": "Root/SabertoothPrototype",
+          "path": "Root/SabertoothPrototype/Materials",
+          "protocolEntityId": "entity_306898404259135563",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": true,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:hi:Root/SabertoothPrototype/Materials/tripo_material_f610c3a9_a24b_44f2_b1c7_74c24b9652d8",
+          "name": "tripo_material_f610c3a9_a24b_44f2_b1c7_74c24b9652d8",
+          "parentPath": "Root/SabertoothPrototype/Materials",
+          "path": "Root/SabertoothPrototype/Materials/tripo_material_f610c3a9_a24b_44f2_b1c7_74c24b9652d8",
+          "protocolEntityId": "entity_306898404259135564",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": true,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:hi:Root/SabertoothPrototype/Materials/Warm_ivory_canines",
+          "name": "Warm_ivory_canines",
+          "parentPath": "Root/SabertoothPrototype/Materials",
+          "path": "Root/SabertoothPrototype/Materials/Warm_ivory_canines",
+          "protocolEntityId": "entity_306898404259135565",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": true,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:hi:Root/SabertoothPrototype/tripo_node_f610c3a9_a24b_44f2_b1c7_74c24b9652d8",
+          "name": "tripo_node_f610c3a9_a24b_44f2_b1c7_74c24b9652d8",
+          "parentPath": "Root/SabertoothPrototype",
+          "path": "Root/SabertoothPrototype/tripo_node_f610c3a9_a24b_44f2_b1c7_74c24b9652d8",
+          "protocolEntityId": "entity_306898404259135566",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": true,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:hi:Root/SabertoothPrototype/tripo_node_f610c3a9_a24b_44f2_b1c7_74c24b9652d8/tripo_mesh_f610c3a9_a24b_44f2_b1c7_74c24b9652d8",
+          "name": "tripo_mesh_f610c3a9_a24b_44f2_b1c7_74c24b9652d8",
+          "parentPath": "Root/SabertoothPrototype/tripo_node_f610c3a9_a24b_44f2_b1c7_74c24b9652d8",
+          "path": "Root/SabertoothPrototype/tripo_node_f610c3a9_a24b_44f2_b1c7_74c24b9652d8/tripo_mesh_f610c3a9_a24b_44f2_b1c7_74c24b9652d8",
+          "protocolEntityId": "entity_306898404259135567",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": true,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:hi:Root/SabertoothPrototype/SaberCanine",
+          "name": "SaberCanine",
+          "parentPath": "Root/SabertoothPrototype",
+          "path": "Root/SabertoothPrototype/SaberCanine",
+          "protocolEntityId": "entity_306898404259135568",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": true,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:hi:Root/SabertoothPrototype/SaberCanine/SaberCanine",
+          "name": "SaberCanine",
+          "parentPath": "Root/SabertoothPrototype/SaberCanine",
+          "path": "Root/SabertoothPrototype/SaberCanine/SaberCanine",
+          "protocolEntityId": "entity_306898404259135569",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": true,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:hi:Root/SabertoothPrototype/SaberCanine_001",
+          "name": "SaberCanine_001",
+          "parentPath": "Root/SabertoothPrototype",
+          "path": "Root/SabertoothPrototype/SaberCanine_001",
+          "protocolEntityId": "entity_306898404259135570",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": true,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:hi:Root/SabertoothPrototype/SaberCanine_001/SaberCanine_001",
+          "name": "SaberCanine_001",
+          "parentPath": "Root/SabertoothPrototype/SaberCanine_001",
+          "path": "Root/SabertoothPrototype/SaberCanine_001/SaberCanine_001",
+          "protocolEntityId": "entity_306898404259135571",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        }
+      ],
+      "entityCount": 14,
+      "guid": "b9c35d5c-28b3-4ff0-81e2-519e43e8451c",
+      "hierarchy": [
+        {
+          "active": true,
+          "children": [
+            {
+              "active": true,
+              "children": [
+                {
+                  "active": true,
+                  "children": [],
+                  "entityId": "scene:hi:Root/MammothPrototype/Materials/tripo_material_18389fb4_7048_4226_82ba_4da5e31f0c81",
+                  "name": "tripo_material_18389fb4_7048_4226_82ba_4da5e31f0c81",
+                  "path": "Root/MammothPrototype/Materials/tripo_material_18389fb4_7048_4226_82ba_4da5e31f0c81",
+                  "protocolEntityId": "entity_306898404259135530",
+                  "transform": {
+                    "position": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "rotation": [
+                      0,
+                      0,
+                      0,
+                      1
+                    ],
+                    "scale": [
+                      1,
+                      1,
+                      1
+                    ]
+                  },
+                  "type": "Entity"
+                }
+              ],
+              "entityId": "scene:hi:Root/MammothPrototype/Materials",
+              "name": "Materials",
+              "path": "Root/MammothPrototype/Materials",
+              "protocolEntityId": "entity_306898404259135529",
+              "transform": {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ]
+              },
+              "type": "Entity"
+            },
+            {
+              "active": true,
+              "children": [],
+              "entityId": "scene:hi:Root/MammothPrototype/tripo_mesh_18389fb4_7048_4226_82ba_4da5e31f0c81",
+              "name": "tripo_mesh_18389fb4_7048_4226_82ba_4da5e31f0c81",
+              "path": "Root/MammothPrototype/tripo_mesh_18389fb4_7048_4226_82ba_4da5e31f0c81",
+              "protocolEntityId": "entity_306898404259135531",
+              "transform": {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ]
+              },
+              "type": "Entity"
+            }
+          ],
+          "entityId": "scene:hi:Root/MammothPrototype",
+          "name": "MammothPrototype",
+          "path": "Root/MammothPrototype",
+          "protocolEntityId": "entity_306898404259135528",
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": true,
+          "children": [
+            {
+              "active": true,
+              "children": [
+                {
+                  "active": true,
+                  "children": [],
+                  "entityId": "scene:hi:Root/SabertoothPrototype/Materials/tripo_material_f610c3a9_a24b_44f2_b1c7_74c24b9652d8",
+                  "name": "tripo_material_f610c3a9_a24b_44f2_b1c7_74c24b9652d8",
+                  "path": "Root/SabertoothPrototype/Materials/tripo_material_f610c3a9_a24b_44f2_b1c7_74c24b9652d8",
+                  "protocolEntityId": "entity_306898404259135564",
+                  "transform": {
+                    "position": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "rotation": [
+                      0,
+                      0,
+                      0,
+                      1
+                    ],
+                    "scale": [
+                      1,
+                      1,
+                      1
+                    ]
+                  },
+                  "type": "Entity"
+                },
+                {
+                  "active": true,
+                  "children": [],
+                  "entityId": "scene:hi:Root/SabertoothPrototype/Materials/Warm_ivory_canines",
+                  "name": "Warm_ivory_canines",
+                  "path": "Root/SabertoothPrototype/Materials/Warm_ivory_canines",
+                  "protocolEntityId": "entity_306898404259135565",
+                  "transform": {
+                    "position": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "rotation": [
+                      0,
+                      0,
+                      0,
+                      1
+                    ],
+                    "scale": [
+                      1,
+                      1,
+                      1
+                    ]
+                  },
+                  "type": "Entity"
+                }
+              ],
+              "entityId": "scene:hi:Root/SabertoothPrototype/Materials",
+              "name": "Materials",
+              "path": "Root/SabertoothPrototype/Materials",
+              "protocolEntityId": "entity_306898404259135563",
+              "transform": {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ]
+              },
+              "type": "Entity"
+            },
+            {
+              "active": true,
+              "children": [
+                {
+                  "active": true,
+                  "children": [],
+                  "entityId": "scene:hi:Root/SabertoothPrototype/tripo_node_f610c3a9_a24b_44f2_b1c7_74c24b9652d8/tripo_mesh_f610c3a9_a24b_44f2_b1c7_74c24b9652d8",
+                  "name": "tripo_mesh_f610c3a9_a24b_44f2_b1c7_74c24b9652d8",
+                  "path": "Root/SabertoothPrototype/tripo_node_f610c3a9_a24b_44f2_b1c7_74c24b9652d8/tripo_mesh_f610c3a9_a24b_44f2_b1c7_74c24b9652d8",
+                  "protocolEntityId": "entity_306898404259135567",
+                  "transform": {
+                    "position": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "rotation": [
+                      0,
+                      0,
+                      0,
+                      1
+                    ],
+                    "scale": [
+                      1,
+                      1,
+                      1
+                    ]
+                  },
+                  "type": "Entity"
+                }
+              ],
+              "entityId": "scene:hi:Root/SabertoothPrototype/tripo_node_f610c3a9_a24b_44f2_b1c7_74c24b9652d8",
+              "name": "tripo_node_f610c3a9_a24b_44f2_b1c7_74c24b9652d8",
+              "path": "Root/SabertoothPrototype/tripo_node_f610c3a9_a24b_44f2_b1c7_74c24b9652d8",
+              "protocolEntityId": "entity_306898404259135566",
+              "transform": {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ]
+              },
+              "type": "Entity"
+            },
+            {
+              "active": true,
+              "children": [
+                {
+                  "active": true,
+                  "children": [],
+                  "entityId": "scene:hi:Root/SabertoothPrototype/SaberCanine/SaberCanine",
+                  "name": "SaberCanine",
+                  "path": "Root/SabertoothPrototype/SaberCanine/SaberCanine",
+                  "protocolEntityId": "entity_306898404259135569",
+                  "transform": {
+                    "position": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "rotation": [
+                      0,
+                      0,
+                      0,
+                      1
+                    ],
+                    "scale": [
+                      1,
+                      1,
+                      1
+                    ]
+                  },
+                  "type": "Entity"
+                }
+              ],
+              "entityId": "scene:hi:Root/SabertoothPrototype/SaberCanine",
+              "name": "SaberCanine",
+              "path": "Root/SabertoothPrototype/SaberCanine",
+              "protocolEntityId": "entity_306898404259135568",
+              "transform": {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ]
+              },
+              "type": "Entity"
+            },
+            {
+              "active": true,
+              "children": [
+                {
+                  "active": true,
+                  "children": [],
+                  "entityId": "scene:hi:Root/SabertoothPrototype/SaberCanine_001/SaberCanine_001",
+                  "name": "SaberCanine_001",
+                  "path": "Root/SabertoothPrototype/SaberCanine_001/SaberCanine_001",
+                  "protocolEntityId": "entity_306898404259135571",
+                  "transform": {
+                    "position": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "rotation": [
+                      0,
+                      0,
+                      0,
+                      1
+                    ],
+                    "scale": [
+                      1,
+                      1,
+                      1
+                    ]
+                  },
+                  "type": "Entity"
+                }
+              ],
+              "entityId": "scene:hi:Root/SabertoothPrototype/SaberCanine_001",
+              "name": "SaberCanine_001",
+              "path": "Root/SabertoothPrototype/SaberCanine_001",
+              "protocolEntityId": "entity_306898404259135570",
+              "transform": {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ]
+              },
+              "type": "Entity"
+            }
+          ],
+          "entityId": "scene:hi:Root/SabertoothPrototype",
+          "name": "SabertoothPrototype",
+          "path": "Root/SabertoothPrototype",
+          "protocolEntityId": "entity_306898404259135562",
+          "transform": {
+            "position": [
+              0.05999999865889549,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        }
+      ],
+      "id": "scene:hi",
+      "name": "Hi",
+      "rootCount": 2,
+      "sourcePath": "Sources/Scenes/Hi.usda",
+      "warnings": []
+    }
+  ],
+  "schemaVersion": "0.1",
+  "scope": "bundle_scenes",
+  "source": "pack_editor_bundle",
+  "sourceTool": "export_bundle_scene_manifest",
+  "warnings": []
+}

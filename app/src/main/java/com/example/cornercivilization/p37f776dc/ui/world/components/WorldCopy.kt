@@ -1,0 +1,30 @@
+package com.example.cornercivilization.p37f776dc.ui.world.components
+
+// Text copied from accepted design/design-spec.json revision 3.
+internal object WorldCopy {
+    const val FirstDialogTitle = "一小块地，慢慢长大"
+    const val FirstDialogMessage = "观察居民，选择水、火或资源，再点一块空地。当天未最小化正常运行超过10分钟，次日开启时进入下个时代。"
+    const val PauseDialogTitle = "沙盘歇一会儿"
+    const val PauseDialogMessage = "暂歇、最小化或挂起会暂停成长。转头看别的应用仍可成长；入侵倒计时仅在沙盘进入视野时推进。"
+    const val ErrorDialogTitle = "这次没能读到家园"
+    const val ErrorDialogMessage = "先保留原存档。可以重试读取，或在确认后从原始时代重新开始。"
+    const val ConfirmDialogTitle = "重新开始这个文明？"
+    const val ConfirmDialogMessage = "当前城市、时代、资源、今日成长及升级资格都会清除。未完成入侵仍须先恢复解决。"
+    const val HelpDialogTitle = "让小世界自己生活"
+    const val HelpDialogMessage = "水让地面湿润；火让居民避难、房屋受损后重建；资源带来搬运和建设。居民不会死亡。超过10分钟只取得资格，次日开启最多升一个时代。太空时代每日运行5分钟后，连续点中飞船10次守住文明。离开视野，入侵倒计时会暂停。"
+    const val Era0Name = "原始"
+    const val Era0Subtitle = "围着火种安家"
+    const val Era0Activity = "采集、搬运、烤一块过大的蘑菇"
+    const val Era1Name = "农耕"
+    const val Era1Subtitle = "风车转起来了"
+    const val Era1Activity = "播种、推车、给井盖戴草帽"
+    const val Era2Name = "工业"
+    const val Era2Subtitle = "小小机器忙起来"
+    const val Era2Activity = "运输、装配、给烟囱织围巾"
+    const val Era3Name = "现代"
+    const val Era3Subtitle = "公园里开了灯"
+    const val Era3Activity = "通勤、散步、无人机送错花盆"
+    const val Era4Name = "太空"
+    const val Era4Subtitle = "飞船从家门口经过"
+    const val Era4Activity = "空中通勤、能源维护、运输月亮形饼干"
+}

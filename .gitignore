@@ -1,0 +1,13 @@
+/.gradle/
+/.kotlin/
+/**/build/
+/local.properties
+/.idea/
+/.vibelab/
+*.apk
+*.jks
+*.keystore
+.env
+.env.*
+.DS_Store
+*.log

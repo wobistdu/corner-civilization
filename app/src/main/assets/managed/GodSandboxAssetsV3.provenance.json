@@ -1,0 +1,140 @@
+{
+  "schemaVersion": "spatialcraft.editor-pack-provenance/v1",
+  "managed": true,
+  "generatedAt": "2026-11-11T07:03:34.509Z",
+  "bundle": {
+    "path": "/Users/bytedance/.pico/cli/workflow/runs/run-e482851a-c71d-4300-a8c4-712caed07ef1/artifacts/editor/delivery.bundle",
+    "digest": {
+      "algorithm": "sha256",
+      "value": "6afafb9f96d38747a926ae60a4c26d7e337fc113cfa87e3334ede11b67746133"
+    },
+    "scenesPath": "/Users/bytedance/.pico/cli/workflow/runs/run-e482851a-c71d-4300-a8c4-712caed07ef1/artifacts/editor/scenes.json",
+    "scenesDigest": {
+      "algorithm": "sha256",
+      "value": "f6e25bf2daf8bad511ce345692be15135734b937c3f4db04972409dbacd8ee17"
+    },
+    "entryScene": "Sources/Scenes/GodSandboxAssetsV3.usda",
+    "runtimeSceneKey": "Scenes/GodSandboxAssetsV3",
+    "sceneCount": 1
+  },
+  "workflow": {
+    "runId": "run-e482851a-c71d-4300-a8c4-712caed07ef1",
+    "acceptedRevision": 1,
+    "sceneFingerprint": "1a75fd1a67e316405e354a50f5d8141dd7028bec146c4953befcd1d7fbe1ef84",
+    "gateProof": {
+      "path": "sidecars/v7/d9e2c3a482ae4ecfcacbe403788ca8aa7432a32c605bb84c64b20adebf99acea.json",
+      "digest": "d9e2c3a482ae4ecfcacbe403788ca8aa7432a32c605bb84c64b20adebf99acea",
+      "bytes": 23831,
+      "mediaType": "application/json"
+    }
+  },
+  "packageGate": {
+    "status": "pass",
+    "sceneManifestWritten": true,
+    "acceptedSceneMatched": true
+  },
+  "warnings": [
+    {
+      "code": "EDITOR_EXPERIENCE_REVIEW_WARNING",
+      "message": "Current seven static views show fire placement but are too small to verify fine flame/spark/smoke appearance or temporal progression independently. Trusted particle subflow succeeded; these frames alone are not motion or device-performance proof. No top-down orthographic frame is supplied in this v7 review set.",
+      "detail": {
+        "findingId": "review-scale-limits",
+        "owner": "enhancement",
+        "summary": "Current seven static views show fire placement but are too small to verify fine flame/spark/smoke appearance or temporal progression independently. Trusted particle subflow succeeded; these frames alone are not motion or device-performance proof. No top-down orthographic frame is supplied in this v7 review set.",
+        "observedInputDigest": "f5030be4777768e000e1632228e1b700a50cc209b1bc484d1d9800d8be2c2be4",
+        "evidence": [
+          {
+            "path": "sidecars/v7/b786ebd59633f67d08c52cf5983d606e1e58d30851bd43cecb47a3bd39ff1b1d.json",
+            "digest": "b786ebd59633f67d08c52cf5983d606e1e58d30851bd43cecb47a3bd39ff1b1d",
+            "bytes": 1110,
+            "mediaType": "application/json"
+          },
+          {
+            "path": "sidecars/v7/dfcacab628bd55e41f07064913a2afb9f8709ca3e43cc5ad6098b90712c8b8ae.json",
+            "digest": "dfcacab628bd55e41f07064913a2afb9f8709ca3e43cc5ad6098b90712c8b8ae",
+            "bytes": 1109,
+            "mediaType": "application/json"
+          },
+          {
+            "path": "sidecars/v7/67ee3af81c21f1bb129720d1e8a32bc6587d48f54241509897f1db3774ace250.json",
+            "digest": "67ee3af81c21f1bb129720d1e8a32bc6587d48f54241509897f1db3774ace250",
+            "bytes": 1108,
+            "mediaType": "application/json"
+          },
+          {
+            "path": "sidecars/v7/cfe405c103479ac2950acc050cd604d51c4afa818f5e3d522ad976dc15b9914d.json",
+            "digest": "cfe405c103479ac2950acc050cd604d51c4afa818f5e3d522ad976dc15b9914d",
+            "bytes": 1107,
+            "mediaType": "application/json"
+          },
+          {
+            "path": "sidecars/v7/3afcbfb41d9f73f47bfc53f4595ef04cf3695f9d4d36ba777044e2e877d0e73f.json",
+            "digest": "3afcbfb41d9f73f47bfc53f4595ef04cf3695f9d4d36ba777044e2e877d0e73f",
+            "bytes": 1110,
+            "mediaType": "application/json"
+          },
+          {
+            "path": "sidecars/v7/f896aee76105e0c5e7ba188c97e1f32caf3911e2fd398a83cd81eb5972104bc1.json",
+            "digest": "f896aee76105e0c5e7ba188c97e1f32caf3911e2fd398a83cd81eb5972104bc1",
+            "bytes": 1109,
+            "mediaType": "application/json"
+          },
+          {
+            "path": "sidecars/v7/de4574f26c795cbd821ccacbd02177272ede5c5051eda08262558167a1e4d6ed.json",
+            "digest": "de4574f26c795cbd821ccacbd02177272ede5c5051eda08262558167a1e4d6ed",
+            "bytes": 1258,
+            "mediaType": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "code": "EDITOR_EXPERIENCE_REVIEW_WARNING",
+      "message": "Inventory records lowest canopy edge Y0.017138m and deferred resident clearance. No resident or construction pose is present in these views, so entrance clearance, motion fit and navigation remain unverified before game integration.",
+      "detail": {
+        "findingId": "resident-clearance-pending",
+        "owner": "asset",
+        "summary": "Inventory records lowest canopy edge Y0.017138m and deferred resident clearance. No resident or construction pose is present in these views, so entrance clearance, motion fit and navigation remain unverified before game integration.",
+        "observedInputDigest": "f5030be4777768e000e1632228e1b700a50cc209b1bc484d1d9800d8be2c2be4",
+        "evidence": [
+          {
+            "path": "sidecars/v7/b786ebd59633f67d08c52cf5983d606e1e58d30851bd43cecb47a3bd39ff1b1d.json",
+            "digest": "b786ebd59633f67d08c52cf5983d606e1e58d30851bd43cecb47a3bd39ff1b1d",
+            "bytes": 1110,
+            "mediaType": "application/json"
+          },
+          {
+            "path": "sidecars/v7/dfcacab628bd55e41f07064913a2afb9f8709ca3e43cc5ad6098b90712c8b8ae.json",
+            "digest": "dfcacab628bd55e41f07064913a2afb9f8709ca3e43cc5ad6098b90712c8b8ae",
+            "bytes": 1109,
+            "mediaType": "application/json"
+          },
+          {
+            "path": "sidecars/v7/de4574f26c795cbd821ccacbd02177272ede5c5051eda08262558167a1e4d6ed.json",
+            "digest": "de4574f26c795cbd821ccacbd02177272ede5c5051eda08262558167a1e4d6ed",
+            "bytes": 1258,
+            "mediaType": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "code": "EDITOR_EXPERIENCE_REVIEW_WARNING",
+      "message": "This is an asset kit. Gameplay state switching, props, full-scene instance budget, and Swan device readability/frame time are not validated by these Editor captures.",
+      "detail": {
+        "findingId": "runtime-integration-pending",
+        "owner": "application-code",
+        "summary": "This is an asset kit. Gameplay state switching, props, full-scene instance budget, and Swan device readability/frame time are not validated by these Editor captures.",
+        "observedInputDigest": "f5030be4777768e000e1632228e1b700a50cc209b1bc484d1d9800d8be2c2be4",
+        "evidence": [
+          {
+            "path": "sidecars/v7/de4574f26c795cbd821ccacbd02177272ede5c5051eda08262558167a1e4d6ed.json",
+            "digest": "de4574f26c795cbd821ccacbd02177272ede5c5051eda08262558167a1e4d6ed",
+            "bytes": 1258,
+            "mediaType": "application/json"
+          }
+        ]
+      }
+    }
+  ]
+}

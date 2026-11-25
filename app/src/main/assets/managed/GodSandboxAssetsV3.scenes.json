@@ -1,0 +1,1019 @@
+{
+  "activeScenePath": "Sources/Scenes/GodSandboxAssetsV3.usda",
+  "detail": "full",
+  "scenes": [
+    {
+      "bundlePath": "Sources/Scenes/GodSandboxAssetsV3.usda",
+      "container": {
+        "appContainer": "Stage",
+        "bounded": false,
+        "contentHost": null,
+        "coordinateSystem": "right-handed, meters",
+        "editorType": "Stage",
+        "isDefault": false,
+        "showUISample": false,
+        "sizeDp": null,
+        "sizeMeters": null,
+        "source": "editor-viewport-container-settings",
+        "spaceRequirement": "FullSpace",
+        "unit": "DevicePoint",
+        "usageHint": "Use Stage for immersive unbounded 3D content."
+      },
+      "entities": [
+        {
+          "active": true,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:godsandboxassetsv3:Root/RainShelter",
+          "name": "RainShelter",
+          "parentPath": "Root",
+          "path": "Root/RainShelter",
+          "protocolEntityId": "entity_343121153411252287",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": true,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:godsandboxassetsv3:Root/RainShelter/Materials",
+          "name": "Materials",
+          "parentPath": "Root/RainShelter",
+          "path": "Root/RainShelter/Materials",
+          "protocolEntityId": "entity_343121153411252288",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": true,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:godsandboxassetsv3:Root/RainShelter/Materials/tripo_material_31ba21c6_84ec_4dfc_89e7_52fbfdd45364",
+          "name": "tripo_material_31ba21c6_84ec_4dfc_89e7_52fbfdd45364",
+          "parentPath": "Root/RainShelter/Materials",
+          "path": "Root/RainShelter/Materials/tripo_material_31ba21c6_84ec_4dfc_89e7_52fbfdd45364",
+          "protocolEntityId": "entity_343121153411252289",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": true,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:godsandboxassetsv3:Root/RainShelter/Canopy",
+          "name": "Canopy",
+          "parentPath": "Root/RainShelter",
+          "path": "Root/RainShelter/Canopy",
+          "protocolEntityId": "entity_343121153411252290",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": true,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:godsandboxassetsv3:Root/RainShelter/Canopy/tripo_mesh_31ba21c6_84ec_4dfc_89e7_52fbfdd45364_001",
+          "name": "tripo_mesh_31ba21c6_84ec_4dfc_89e7_52fbfdd45364_001",
+          "parentPath": "Root/RainShelter/Canopy",
+          "path": "Root/RainShelter/Canopy/tripo_mesh_31ba21c6_84ec_4dfc_89e7_52fbfdd45364_001",
+          "protocolEntityId": "entity_343121153411252291",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": true,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:godsandboxassetsv3:Root/RainShelter/Frame",
+          "name": "Frame",
+          "parentPath": "Root/RainShelter",
+          "path": "Root/RainShelter/Frame",
+          "protocolEntityId": "entity_343121153411252292",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": true,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:godsandboxassetsv3:Root/RainShelter/Frame/tripo_mesh_31ba21c6_84ec_4dfc_89e7_52fbfdd45364_002",
+          "name": "tripo_mesh_31ba21c6_84ec_4dfc_89e7_52fbfdd45364_002",
+          "parentPath": "Root/RainShelter/Frame",
+          "path": "Root/RainShelter/Frame/tripo_mesh_31ba21c6_84ec_4dfc_89e7_52fbfdd45364_002",
+          "protocolEntityId": "entity_343121153411252293",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": true,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:godsandboxassetsv3:Root/CampfireParticles",
+          "name": "CampfireParticles",
+          "parentPath": "Root",
+          "path": "Root/CampfireParticles",
+          "protocolEntityId": "entity_343121153411252313",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0.0010000000474974513,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": true,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:godsandboxassetsv3:Root/CampfireParticles/NormalFire",
+          "name": "NormalFire",
+          "parentPath": "Root/CampfireParticles",
+          "path": "Root/CampfireParticles/NormalFire",
+          "protocolEntityId": "entity_343121153411252314",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": true,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:godsandboxassetsv3:Root/CampfireParticles/NormalFire/Flame",
+          "name": "Flame",
+          "parentPath": "Root/CampfireParticles/NormalFire",
+          "path": "Root/CampfireParticles/NormalFire/Flame",
+          "protocolEntityId": "entity_343121153411252317",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": true,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:godsandboxassetsv3:Root/CampfireParticles/NormalFire/Sparks",
+          "name": "Sparks",
+          "parentPath": "Root/CampfireParticles/NormalFire",
+          "path": "Root/CampfireParticles/NormalFire/Sparks",
+          "protocolEntityId": "entity_343121153411252321",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              0.10000000149011612,
+              0.10000000149011612,
+              0.10000000149011612
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": true,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:godsandboxassetsv3:Root/CampfireParticles/NormalFire/Smoke",
+          "name": "Smoke",
+          "parentPath": "Root/CampfireParticles/NormalFire",
+          "path": "Root/CampfireParticles/NormalFire/Smoke",
+          "protocolEntityId": "entity_343121153411252322",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": false,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:godsandboxassetsv3:Root/CampfireParticles/LowEmber",
+          "name": "LowEmber",
+          "parentPath": "Root/CampfireParticles",
+          "path": "Root/CampfireParticles/LowEmber",
+          "protocolEntityId": "entity_343121153411252315",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": false,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:godsandboxassetsv3:Root/CampfireParticles/LowEmber/Ember",
+          "name": "Ember",
+          "parentPath": "Root/CampfireParticles/LowEmber",
+          "path": "Root/CampfireParticles/LowEmber/Ember",
+          "protocolEntityId": "entity_343121153411252323",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": false,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:godsandboxassetsv3:Root/CampfireParticles/LowEmber/TraceSmoke",
+          "name": "TraceSmoke",
+          "parentPath": "Root/CampfireParticles/LowEmber",
+          "path": "Root/CampfireParticles/LowEmber/TraceSmoke",
+          "protocolEntityId": "entity_343121153411252324",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": false,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:godsandboxassetsv3:Root/CampfireParticles/ExtinguishedSmoke",
+          "name": "ExtinguishedSmoke",
+          "parentPath": "Root/CampfireParticles",
+          "path": "Root/CampfireParticles/ExtinguishedSmoke",
+          "protocolEntityId": "entity_343121153411252316",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": false,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:godsandboxassetsv3:Root/CampfireParticles/ExtinguishedSmoke/ResidualSmoke",
+          "name": "ResidualSmoke",
+          "parentPath": "Root/CampfireParticles/ExtinguishedSmoke",
+          "path": "Root/CampfireParticles/ExtinguishedSmoke/ResidualSmoke",
+          "protocolEntityId": "entity_343121153411252325",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        }
+      ],
+      "entityCount": 17,
+      "guid": "93a42fa7-f186-4e30-a8f8-b2ca7f5f2d1e",
+      "hierarchy": [
+        {
+          "active": true,
+          "children": [
+            {
+              "active": true,
+              "children": [
+                {
+                  "active": true,
+                  "children": [],
+                  "entityId": "scene:godsandboxassetsv3:Root/RainShelter/Materials/tripo_material_31ba21c6_84ec_4dfc_89e7_52fbfdd45364",
+                  "name": "tripo_material_31ba21c6_84ec_4dfc_89e7_52fbfdd45364",
+                  "path": "Root/RainShelter/Materials/tripo_material_31ba21c6_84ec_4dfc_89e7_52fbfdd45364",
+                  "protocolEntityId": "entity_343121153411252289",
+                  "transform": {
+                    "position": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "rotation": [
+                      0,
+                      0,
+                      0,
+                      1
+                    ],
+                    "scale": [
+                      1,
+                      1,
+                      1
+                    ]
+                  },
+                  "type": "Entity"
+                }
+              ],
+              "entityId": "scene:godsandboxassetsv3:Root/RainShelter/Materials",
+              "name": "Materials",
+              "path": "Root/RainShelter/Materials",
+              "protocolEntityId": "entity_343121153411252288",
+              "transform": {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ]
+              },
+              "type": "Entity"
+            },
+            {
+              "active": true,
+              "children": [
+                {
+                  "active": true,
+                  "children": [],
+                  "entityId": "scene:godsandboxassetsv3:Root/RainShelter/Canopy/tripo_mesh_31ba21c6_84ec_4dfc_89e7_52fbfdd45364_001",
+                  "name": "tripo_mesh_31ba21c6_84ec_4dfc_89e7_52fbfdd45364_001",
+                  "path": "Root/RainShelter/Canopy/tripo_mesh_31ba21c6_84ec_4dfc_89e7_52fbfdd45364_001",
+                  "protocolEntityId": "entity_343121153411252291",
+                  "transform": {
+                    "position": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "rotation": [
+                      0,
+                      0,
+                      0,
+                      1
+                    ],
+                    "scale": [
+                      1,
+                      1,
+                      1
+                    ]
+                  },
+                  "type": "Entity"
+                }
+              ],
+              "entityId": "scene:godsandboxassetsv3:Root/RainShelter/Canopy",
+              "name": "Canopy",
+              "path": "Root/RainShelter/Canopy",
+              "protocolEntityId": "entity_343121153411252290",
+              "transform": {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ]
+              },
+              "type": "Entity"
+            },
+            {
+              "active": true,
+              "children": [
+                {
+                  "active": true,
+                  "children": [],
+                  "entityId": "scene:godsandboxassetsv3:Root/RainShelter/Frame/tripo_mesh_31ba21c6_84ec_4dfc_89e7_52fbfdd45364_002",
+                  "name": "tripo_mesh_31ba21c6_84ec_4dfc_89e7_52fbfdd45364_002",
+                  "path": "Root/RainShelter/Frame/tripo_mesh_31ba21c6_84ec_4dfc_89e7_52fbfdd45364_002",
+                  "protocolEntityId": "entity_343121153411252293",
+                  "transform": {
+                    "position": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "rotation": [
+                      0,
+                      0,
+                      0,
+                      1
+                    ],
+                    "scale": [
+                      1,
+                      1,
+                      1
+                    ]
+                  },
+                  "type": "Entity"
+                }
+              ],
+              "entityId": "scene:godsandboxassetsv3:Root/RainShelter/Frame",
+              "name": "Frame",
+              "path": "Root/RainShelter/Frame",
+              "protocolEntityId": "entity_343121153411252292",
+              "transform": {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ]
+              },
+              "type": "Entity"
+            }
+          ],
+          "entityId": "scene:godsandboxassetsv3:Root/RainShelter",
+          "name": "RainShelter",
+          "path": "Root/RainShelter",
+          "protocolEntityId": "entity_343121153411252287",
+          "transform": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": true,
+          "children": [
+            {
+              "active": true,
+              "children": [
+                {
+                  "active": true,
+                  "children": [],
+                  "entityId": "scene:godsandboxassetsv3:Root/CampfireParticles/NormalFire/Flame",
+                  "name": "Flame",
+                  "path": "Root/CampfireParticles/NormalFire/Flame",
+                  "protocolEntityId": "entity_343121153411252317",
+                  "transform": {
+                    "position": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "rotation": [
+                      0,
+                      0,
+                      0,
+                      1
+                    ],
+                    "scale": [
+                      1,
+                      1,
+                      1
+                    ]
+                  },
+                  "type": "Entity"
+                },
+                {
+                  "active": true,
+                  "children": [],
+                  "entityId": "scene:godsandboxassetsv3:Root/CampfireParticles/NormalFire/Sparks",
+                  "name": "Sparks",
+                  "path": "Root/CampfireParticles/NormalFire/Sparks",
+                  "protocolEntityId": "entity_343121153411252321",
+                  "transform": {
+                    "position": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "rotation": [
+                      0,
+                      0,
+                      0,
+                      1
+                    ],
+                    "scale": [
+                      0.10000000149011612,
+                      0.10000000149011612,
+                      0.10000000149011612
+                    ]
+                  },
+                  "type": "Entity"
+                },
+                {
+                  "active": true,
+                  "children": [],
+                  "entityId": "scene:godsandboxassetsv3:Root/CampfireParticles/NormalFire/Smoke",
+                  "name": "Smoke",
+                  "path": "Root/CampfireParticles/NormalFire/Smoke",
+                  "protocolEntityId": "entity_343121153411252322",
+                  "transform": {
+                    "position": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "rotation": [
+                      0,
+                      0,
+                      0,
+                      1
+                    ],
+                    "scale": [
+                      1,
+                      1,
+                      1
+                    ]
+                  },
+                  "type": "Entity"
+                }
+              ],
+              "entityId": "scene:godsandboxassetsv3:Root/CampfireParticles/NormalFire",
+              "name": "NormalFire",
+              "path": "Root/CampfireParticles/NormalFire",
+              "protocolEntityId": "entity_343121153411252314",
+              "transform": {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ]
+              },
+              "type": "Entity"
+            },
+            {
+              "active": false,
+              "children": [
+                {
+                  "active": false,
+                  "children": [],
+                  "entityId": "scene:godsandboxassetsv3:Root/CampfireParticles/LowEmber/Ember",
+                  "name": "Ember",
+                  "path": "Root/CampfireParticles/LowEmber/Ember",
+                  "protocolEntityId": "entity_343121153411252323",
+                  "transform": {
+                    "position": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "rotation": [
+                      0,
+                      0,
+                      0,
+                      1
+                    ],
+                    "scale": [
+                      1,
+                      1,
+                      1
+                    ]
+                  },
+                  "type": "Entity"
+                },
+                {
+                  "active": false,
+                  "children": [],
+                  "entityId": "scene:godsandboxassetsv3:Root/CampfireParticles/LowEmber/TraceSmoke",
+                  "name": "TraceSmoke",
+                  "path": "Root/CampfireParticles/LowEmber/TraceSmoke",
+                  "protocolEntityId": "entity_343121153411252324",
+                  "transform": {
+                    "position": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "rotation": [
+                      0,
+                      0,
+                      0,
+                      1
+                    ],
+                    "scale": [
+                      1,
+                      1,
+                      1
+                    ]
+                  },
+                  "type": "Entity"
+                }
+              ],
+              "entityId": "scene:godsandboxassetsv3:Root/CampfireParticles/LowEmber",
+              "name": "LowEmber",
+              "path": "Root/CampfireParticles/LowEmber",
+              "protocolEntityId": "entity_343121153411252315",
+              "transform": {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ]
+              },
+              "type": "Entity"
+            },
+            {
+              "active": false,
+              "children": [
+                {
+                  "active": false,
+                  "children": [],
+                  "entityId": "scene:godsandboxassetsv3:Root/CampfireParticles/ExtinguishedSmoke/ResidualSmoke",
+                  "name": "ResidualSmoke",
+                  "path": "Root/CampfireParticles/ExtinguishedSmoke/ResidualSmoke",
+                  "protocolEntityId": "entity_343121153411252325",
+                  "transform": {
+                    "position": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "rotation": [
+                      0,
+                      0,
+                      0,
+                      1
+                    ],
+                    "scale": [
+                      1,
+                      1,
+                      1
+                    ]
+                  },
+                  "type": "Entity"
+                }
+              ],
+              "entityId": "scene:godsandboxassetsv3:Root/CampfireParticles/ExtinguishedSmoke",
+              "name": "ExtinguishedSmoke",
+              "path": "Root/CampfireParticles/ExtinguishedSmoke",
+              "protocolEntityId": "entity_343121153411252316",
+              "transform": {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ]
+              },
+              "type": "Entity"
+            }
+          ],
+          "entityId": "scene:godsandboxassetsv3:Root/CampfireParticles",
+          "name": "CampfireParticles",
+          "path": "Root/CampfireParticles",
+          "protocolEntityId": "entity_343121153411252313",
+          "transform": {
+            "position": [
+              0,
+              0.0010000000474974513,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        }
+      ],
+      "id": "scene:godsandboxassetsv3",
+      "name": "GodSandboxAssetsV3",
+      "rootCount": 2,
+      "sourcePath": "Sources/Scenes/GodSandboxAssetsV3.usda",
+      "warnings": [],
+      "runtimeSceneKey": "Scenes/GodSandboxAssetsV3"
+    }
+  ],
+  "schemaVersion": "0.1",
+  "scope": "bundle_scenes",
+  "source": "pack_editor_bundle",
+  "sourceTool": "export_bundle_scene_manifest",
+  "warnings": [],
+  "runtimeSceneRoot": "Sources"
+}

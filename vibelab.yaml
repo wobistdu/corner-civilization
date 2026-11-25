@@ -1,0 +1,36 @@
+{
+  "app": {
+    "name": "桌角文明",
+    "slogan": "俯身一看，万物正在生活。",
+    "description": "像《God: Serengeti》中的上帝一样，俯瞰眼前的微缩世界。\n\n《桌角文明》是一款 PICO MR 微缩生态沙盘。河流穿过草地，村民采集、搬运、耕作、修屋，累了便走进棚下坐一会儿。远处的猛犸结伴觅食，小象偶尔离群，剑齿虎伺机而动。俯身靠近，你会发现每个小生命都有正在忙的事。\n\n用一场雨滋养草地、浇灭火焰；点起一簇火，看村民和野兽躲避危险；放下一束木材，看人们搬回村落，修复被毁的家。你的轻轻一动，会在这个世界里引出新的故事。\n\n展开村落见闻画卷，看看刚刚发生了什么。也可以什么都不做，陪这个小世界生活一会儿。",
+    "tags": [
+      "休闲益智"
+    ],
+    "category": "game",
+    "icon": "release/icon.png",
+    "landscape": "release/screenshots/01-world.png",
+    "detail_images": [
+      "release/screenshots/01-world.png",
+      "release/screenshots/02-rain.png",
+      "release/screenshots/03-chronicle.png"
+    ],
+    "videos": []
+  },
+  "version": {
+    "name": "0.17.5",
+    "notes": "象群结伴与幼象离群探索；捕食后30秒边缘补员；村民进棚坐下休息；降雨、火焰、木材搬运和村落见闻画卷。当前为原型体验版。"
+  },
+  "build": {
+    "repo_url": "https://github.com/wobistdu/corner-civilization",
+    "repo_visibility": "public",
+    "tech_stack": "android_spatial",
+    "ai_tool": "Codex CLI",
+    "ai_model": "GPT-6",
+    "features": [
+      "hand_tracking",
+      "mixed_reality",
+      "controller_support"
+    ],
+    "teammates": []
+  }
+}

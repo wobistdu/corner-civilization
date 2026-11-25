@@ -1,0 +1,122 @@
+{
+  "gatherer": {
+    "sourceBlend": "assets/primitive-v2/residents/gatherer/gatherer-rigged.blend",
+    "sourceBlendSha256": "12de3dea21200475b32629746eb5a191167f7739b9980d16c4440a0255d5138d",
+    "sha256": "739d9145d357c0c2159d3da79813f1b7191d5ef5c716a8357d5e235bbd3f0ddf",
+    "triangles": 7802,
+    "boneCount": 17,
+    "sourceHeight": 0.036,
+    "clips": [
+      "idle",
+      "walk",
+      "gather",
+      "carry",
+      "carry_wood",
+      "tend_fire",
+      "lash_roof",
+      "catch_rain",
+      "wave",
+      "talk",
+      "stretch"
+    ],
+    "walkMetresPerSecond": 0.017523290123790503,
+    "carryMetresPerSecond": 0.01468038884922862,
+    "review": "Reviewed all 5 × 6 pose views in contact-sheet.png"
+  },
+  "carrier": {
+    "sourceBlend": "assets/primitive-v2/residents/carrier/carrier-rigged.blend",
+    "sourceBlendSha256": "87b6fa23bd323f94386a4f566fcc57ddaac2153f3e4aa5ec22d9329787c59d4b",
+    "sha256": "b26c582058fa4a8dbd67b8a147550cd1fb9ceec4d3ad65ad63f32a2578e6e5a9",
+    "triangles": 7900,
+    "boneCount": 17,
+    "sourceHeight": 0.036,
+    "clips": [
+      "idle",
+      "walk",
+      "gather",
+      "carry",
+      "carry_wood",
+      "tend_fire",
+      "lash_roof",
+      "catch_rain",
+      "wave",
+      "talk",
+      "stretch"
+    ],
+    "walkMetresPerSecond": 0.017523290123790503,
+    "carryMetresPerSecond": 0.01468038884922862,
+    "review": "Reviewed all 5 × 6 pose views in contact-sheet.png"
+  },
+  "scout": {
+    "sourceBlend": "assets/primitive-v2/residents/scout/scout-rigged.blend",
+    "sourceBlendSha256": "932a88cd3b1352b1e41a44c462e4ebe7af2f83ac95b72b5020ecbefef13cab1c",
+    "sha256": "2939d2cb9a473432b1da44ec48399440705c0730378413f7920a1b5b552c0f7e",
+    "triangles": 7731,
+    "boneCount": 17,
+    "sourceHeight": 0.036,
+    "clips": [
+      "idle",
+      "walk",
+      "gather",
+      "carry",
+      "carry_wood",
+      "tend_fire",
+      "lash_roof",
+      "catch_rain",
+      "wave",
+      "talk",
+      "stretch"
+    ],
+    "walkMetresPerSecond": 0.017523290123790503,
+    "carryMetresPerSecond": 0.01468038884922862,
+    "review": "Reviewed all 5 × 6 pose views in contact-sheet.png"
+  },
+  "elder": {
+    "sourceBlend": "assets/residents-v16/elder/elder-rigged.blend",
+    "sourceBlendSha256": "48e574227a76d3355156ee93e1266447ce7b193da517d178c162732f836b9bf8",
+    "sha256": "a0fe2057d045174628c153d92e5ddea1b89cdfd717490d0f3a3034bb2dfe561a",
+    "triangles": 3860,
+    "boneCount": 17,
+    "sourceHeight": 0.036,
+    "clips": [
+      "idle",
+      "walk",
+      "gather",
+      "carry",
+      "carry_wood",
+      "tend_fire",
+      "lash_roof",
+      "catch_rain",
+      "wave",
+      "talk",
+      "stretch"
+    ],
+    "walkMetresPerSecond": 0.014887035358697176,
+    "carryMetresPerSecond": 0.012472228069479268,
+    "review": "Reviewed all 5 × 6 pose views in contact-sheet.png"
+  },
+  "curly": {
+    "sourceBlend": "assets/residents-v16/curly/curly-rigged.blend",
+    "sourceBlendSha256": "d29de321ccf84274f4b2afe8b62028e9f14f084aa50a3988770e140c1eff7ba9",
+    "sha256": "f3721b8cac3d9c892cdff9a21899589a796966f283c004e2ee457f5c0ca9d06d",
+    "triangles": 3741,
+    "boneCount": 17,
+    "sourceHeight": 0.036,
+    "clips": [
+      "idle",
+      "walk",
+      "gather",
+      "carry",
+      "carry_wood",
+      "tend_fire",
+      "lash_roof",
+      "catch_rain",
+      "wave",
+      "talk",
+      "stretch"
+    ],
+    "walkMetresPerSecond": 0.016639513429254293,
+    "carryMetresPerSecond": 0.013940165905902784,
+    "review": "Reviewed all 5 × 6 pose views in contact-sheet.png"
+  }
+}

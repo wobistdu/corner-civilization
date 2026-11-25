@@ -1,0 +1,50 @@
+{
+  "HideElder": {
+    "sourceBlend": "assets/prehistoric-v17/HideElder/HideElder-rigged.blend",
+    "sourceBlendSha256": "a2094afe7f5511788ec577e6cafbff2d95e6a03b06ae26362279d3341cf36d99",
+    "sha256": "cc2cb65ac694f2088e01d444091e86092c6c3365be963268b943f624cbe5f571",
+    "triangles": 3753,
+    "boneCount": 17,
+    "sourceHeight": 0.036,
+    "clips": [
+      "idle",
+      "walk",
+      "gather",
+      "carry",
+      "carry_wood",
+      "tend_fire",
+      "lash_roof",
+      "catch_rain",
+      "wave",
+      "talk",
+      "stretch"
+    ],
+    "walkMetresPerSecond": 0.014887035358697176,
+    "carryMetresPerSecond": 0.012472228069479268,
+    "sourceSha256": "9f93be68e4ed2f3f93582e19df3aef0ad0fdbfac1d8cf32cdc1454505874e67a"
+  },
+  "HideGatherer": {
+    "sourceBlend": "assets/prehistoric-v17/HideGatherer/HideGatherer-rigged.blend",
+    "sourceBlendSha256": "d6cb2c3cff94f1e8b382d67b434a7b81d27de35100b506ec3223665e23dd3d64",
+    "sha256": "19d3a71a8174aa57b7506bc10c16f076c47c0519e8e77942f1644a7c8a10dadd",
+    "triangles": 3776,
+    "boneCount": 17,
+    "sourceHeight": 0.036,
+    "clips": [
+      "idle",
+      "walk",
+      "gather",
+      "carry",
+      "carry_wood",
+      "tend_fire",
+      "lash_roof",
+      "catch_rain",
+      "wave",
+      "talk",
+      "stretch"
+    ],
+    "walkMetresPerSecond": 0.0169391306117177,
+    "carryMetresPerSecond": 0.01419107507293423,
+    "sourceSha256": "5a834f3c95ec5952c7e5a8149ce5a4958db0855f3c420e00e8f53b3268f9f221"
+  }
+}
