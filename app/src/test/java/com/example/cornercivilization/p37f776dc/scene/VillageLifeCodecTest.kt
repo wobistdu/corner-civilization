@@ -7,6 +7,19 @@ import org.junit.Assert.*
 import org.junit.Test
 
 class VillageLifeCodecTest {
+    @Test fun riverWorkSurvivesRestartAndOlderVillagesStartWithoutEquipment() {
+        val life = life()
+        val inProgress = RiverLivelihood.State(48f, blank=true, trapUses=2, catchProgress=.6f)
+        life.river.restore(inProgress)
+        val json = VillageLifeCodec.encode(life.snapshot())
+        val restored = life()
+        restored.restore(VillageLifeCodec.decode(json))
+        assertEquals(inProgress, restored.river.state)
+        json.remove("river")
+        restored.restore(VillageLifeCodec.decode(json))
+        assertEquals(RiverLivelihood.State(), restored.river.state)
+    }
+
     private fun life():VillageLife {
         val w=LocalInterventionWorld(LocalNavigation({_,_->.034f}))
         val v=LivingVillage(w);w.village=v

@@ -32,6 +32,7 @@ internal class LivingVillage(private val world: LocalInterventionWorld) {
     private val routineTurn=mutableMapOf<String,Int>()
     private var forageCooldown=0f
     private var foodCooldown=0f
+    val influence=VillageInfluence(world,this)
     val ecology = VillageEcology()
     val life = VillageLife(world,this)
     val animalLife = VillageWildlifeLife(world,this)
@@ -57,7 +58,7 @@ internal class LivingVillage(private val world: LocalInterventionWorld) {
     private fun safe(p:Point)=!world.dangerous(p)
     private fun route(a:Point,b:Point)=world.navigation.path(a,b){safe(it)}
     fun advance(dt:Float) {
-        if(life.enabled) life.advance(dt)
+        if(life.enabled) { life.advance(dt);influence.advance(dt) }
         if(agriculture&&(!life.enabled||!life.restingSoil)) ecology.grow(dt, world.wetAt(ecology.field))
         ecology.scarAge += dt
         world.hazards.firstOrNull { it.kind==Kind.FIRE }?.let { ecology.scorch=it.point;ecology.scarAge=0f }
@@ -95,7 +96,7 @@ internal class LivingVillage(private val world: LocalInterventionWorld) {
         idleUntil[id]=world.seconds+1f
     }
     private fun choose(id:String,current:Point):Job? {
-        if(life.enabled) return life.choose(id,current)
+        if(life.enabled) return influence.fruitJob(id,current) ?: life.choose(id,current)
         val numbered=id.startsWith("PrimitiveResident_")
         val builder=!numbered || id.last() in listOf('3','6')
         val hauler=!numbered || id.last() in listOf('2','5','8')
@@ -286,6 +287,11 @@ internal class LivingVillage(private val world: LocalInterventionWorld) {
                 if(life.enabled && life.work(id,j,p,dt)) {
                     // New tasks share the same physical travel and interruption contract.
                 } else when(j.kind) {
+                    "pickSeedFruit" -> if(j.elapsed>=2.5f)influence.collectFruit(id,j.goal,p)
+                    "drumGather","drumShelter" -> if(j.elapsed>=5f) {
+                        world.tell(VillageChronicle.nameOf(id)+if(j.kind=="drumGather")"围着鼓点坐了片刻，起身继续干活。" else "在棚边等了等，探头望向小路。")
+                        jobs.remove(id)
+                    }
                     "gatherFood" -> if(j.elapsed>=4f) {
                         val path=if(safe(world.depot))route(p,world.depot)else null
                         if(path!=null && ecology.food+foodBundles.size<ecology.foodCapacity) {

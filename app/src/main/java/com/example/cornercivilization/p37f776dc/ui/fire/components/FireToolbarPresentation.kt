@@ -4,13 +4,15 @@ import com.example.cornercivilization.p37f776dc.domain.model.*
 
 /** Presentation only: no clock, resource allocation or task dispatch here. */
 internal object FireToolbarPresentation {
-    val tools = listOf(FireTool.OBSERVE to "村落见闻", FireTool.WATER to "下雨", FireTool.FIRE to "点火", FireTool.WOOD to "木头")
+    val tools = listOf(FireTool.OBSERVE to "村落见闻", FireTool.WATER to "下雨", FireTool.FIRE to "点火", FireTool.WOOD to "木头", FireTool.DRUM to "敲鼓", FireTool.SEED to "撒种")
 
     fun firstHint(tool: FireTool): String = when (tool) {
         FireTool.OBSERVE -> "翻开画卷，读村中近事"
         FireTool.WATER -> "捏住拖动雨云，松手让附近下雨"
         FireTool.FIRE -> "点地面或房子，让附近起火"
         FireTool.WOOD -> "点地面放木料，他们会自己搬回"
+        FireTool.DRUM -> "点地面敲鼓，留意谁会应声"
+        FireTool.SEED -> "捏住划过土地，松手播种，再浇雨"
     }
 
     fun hint(world: FireSliceState?, tool: FireTool, enabled: Boolean): String = when {

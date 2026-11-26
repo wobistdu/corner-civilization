@@ -130,7 +130,7 @@ class FireSliceViewModelTest {
                 vm.onEvent(FireSliceEvent.DismissHint(tool));runCurrent()
                 assertNull(vm.state.value.firstToolHint)
             }
-            assertEquals(15,store.saved.seenTools)
+            assertEquals((1 shl FireTool.entries.size)-1,store.saved.seenTools)
             val restored=FireSliceViewModel(store,dispatcher);models.put("restored",restored);runCurrent()
             for(tool in FireTool.entries) {
                 restored.onEvent(FireSliceEvent.Select(tool));runCurrent()

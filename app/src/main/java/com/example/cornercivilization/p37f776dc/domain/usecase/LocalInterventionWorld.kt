@@ -158,6 +158,7 @@ internal class LocalInterventionWorld(val navigation: LocalNavigation) {
             tell("${who}受惊，转身避开${area}。")
         }
     }
+    fun localTask(id:String)=tasks[id]?.kind
     fun busy(id: String) = id in tasks || village?.jobs?.containsKey(id)==true
     fun weatherDangerous(p: Point) = hazards.any { it.dangerous && it.point.distance(p)<it.radius+.008f }
     fun dangerous(p: Point) = weatherDangerous(p) || wildlife.frightening(p)

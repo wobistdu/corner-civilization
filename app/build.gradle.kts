@@ -12,8 +12,8 @@ android {
         applicationId = "com.example.cornercivilization.p37f776dc"
         minSdk = 35
         targetSdk = 35
-        versionCode = providers.gradleProperty("cornerVersionCode").map(String::toInt).getOrElse(1)
-        versionName = providers.gradleProperty("cornerVersionName").getOrElse("0.1.0")
+        versionCode = providers.gradleProperty("cornerVersionCode").map(String::toInt).getOrElse(2)
+        versionName = providers.gradleProperty("cornerVersionName").getOrElse("0.19.1")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         ndk { abiFilters.add("arm64-v8a") }

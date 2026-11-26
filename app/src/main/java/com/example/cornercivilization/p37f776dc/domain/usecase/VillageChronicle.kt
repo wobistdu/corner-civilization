@@ -143,6 +143,10 @@ internal class VillageChronicle {
             VillageEvent.GREET_NEIGHBOR -> "遇见熟人，扬手打了个招呼。"
             VillageEvent.CHAT_TOGETHER -> "趁歇工的空当，和邻人聊了一会儿。"
             VillageEvent.STRETCH_BREAK -> "停了停手里的活，长长地伸了个懒腰。"
+            VillageEvent.MOULD_CLAY -> "把湿泥盘的缸坯捧回村；柴堆里有一捆干柴，就能开烧。"
+            VillageEvent.FIRE_CISTERN -> "用一捆干柴烧好了陶缸，下回落雨就能存水了。"
+            VillageEvent.WEAVE_FISH_TRAP -> "割了岸边的芦苇，编成鱼篓下在浅水边。"
+            VillageEvent.LIFT_FISH_TRAP -> "提起沉甸甸的鱼篓，把鲜鱼留在岸边等人搬运。"
             VillageEvent.EAT_FORAGE -> "走到安全处，吃下了刚采的野食。"
         }
         append(time, name + scene)
@@ -150,6 +154,7 @@ internal class VillageChronicle {
 
     companion object {
         private val residentNames = listOf("阿禾", "石生", "小满", "青叶", "阿岚", "松子", "陶伯", "阿桑", "榛子")
+        fun nameOf(id:String)=residentNames.getOrNull(id.substringAfterLast('_').toIntOrNull() ?: -1) ?: "村民"
         fun place(p: LocalInterventionWorld.Point): String {
             val side = when { p.x < -.14f -> "左侧"; p.x > .14f -> "右侧"; else -> "中央" }
             val depth = when { p.z < -.10f -> "后方"; p.z > .10f -> "前方"; else -> "" }

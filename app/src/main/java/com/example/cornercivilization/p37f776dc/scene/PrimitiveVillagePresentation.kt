@@ -282,6 +282,34 @@ internal class PrimitiveVillagePresentation(private val world:Entity,private val
     private val commonJar=waterVessel("CommonWater",root,Vector3(effects.simulation.depot.x+.01f,
         (effects.drySupport(effects.simulation.depot.x,effects.simulation.depot.z)?:.034f)+.0016f,effects.simulation.depot.z),
         .0032f)
+    private val rainCistern = waterVessel("RainCistern", root, Vector3.ZERO, .0052f)
+    // Woven trap: four hoops and ten tapered splints, with an open mouth at the top.
+    private val fishTrap = run {
+        val vertices = mutableListOf<Vector3>()
+        val indices = mutableListOf<Int>()
+        fun ribbon(a: Vector3, b: Vector3, c: Vector3, d: Vector3) {
+            val n = vertices.size
+            vertices.addAll(listOf(a,b,c,d))
+            indices.addAll(listOf(n,n+1,n+2,n,n+2,n+3,n+2,n+1,n,n+3,n+2,n))
+        }
+        fun rim(angle: Float, y: Float): Vector3 {
+            val radius = .0018f + sin(y / .0048f * PI.toFloat()) * .0012f
+            return Vector3(cos(angle)*radius, y, sin(angle)*radius)
+        }
+        for (n in 0 until 10) {
+            val a = n * PI.toFloat()/5f
+            val b = (n+1) * PI.toFloat()/5f
+            for (j in 0..3) {
+                val y = j*.0012f
+                ribbon(rim(a,y),rim(b,y),rim(b,y+.0003f),rim(a,y+.0003f))
+                ribbon(rim(a,y),rim(a+.12f,y),rim(a+.12f,y+.0012f),rim(a,y+.0012f))
+            }
+        }
+        val mesh = MeshResource.createWithMeshModel(MeshModel(vertices,indices),boundsOf(vertices),"WovenFishTrap")
+            .apply { toGlobal(); meshes+=this }
+        model("RiverFishTrap",mesh,thatch)
+    }
+    private val trapFloat = box("FishTrapFloat",Vector3.ZERO,Vector3(.0015f,.0012f,.0015f),wood)
     private val waterTop=run {
         val vertices=listOf(Vector3.ZERO)+(0 until 16).map{n->
             val angle=n*2f*PI.toFloat()/16f
@@ -331,6 +359,22 @@ internal class PrimitiveVillagePresentation(private val world:Entity,private val
             e.enabled=at!=null&&j!=null&&((usingVessel&&j.path.isEmpty())||j.carrying&&j.food==null&&j.wood==null)
         }
         if(refreshSlow) {
+        val river = village.life.river.state
+        rainCistern.enabled = village.life.enabled && (river.blank || river.cistern)
+        val depot = effects.simulation.depot
+        val cx = depot.x + .017f
+        val cz = depot.z - .004f
+        val size = if (river.blank) .64f else 1f
+        rainCistern.transform().scaleVector = Vector3(size)
+        rainCistern.transform().position = Vector3(cx,(effects.drySupport(cx,cz) ?: .034f)+.0026f*size,cz)
+        fishTrap.enabled = village.life.enabled && river.trapUses > 0
+        trapFloat.enabled = fishTrap.enabled && river.catchProgress >= 1f
+        if (fishTrap.enabled) {
+            val bank = village.ecology.bank
+            val y = effects.drySupport(bank.x,bank.z) ?: .034f
+            fishTrap.transform().position = Vector3(bank.x,y,bank.z)
+            trapFloat.transform().position = Vector3(bank.x+.0028f,y+.0028f,bank.z)
+        }
         commonJar.enabled=village.life.enabled
         waterTop.enabled=village.life.enabled&&village.life.water>.05f
         val jar=commonJar.transform().position

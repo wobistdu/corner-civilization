@@ -10,12 +10,12 @@ class FireToolbarPresentationTest {
         shelter=ShelterPhase.COMPLETE,sourceWood=0,spentWood=8,buildMillis=12_000)
     @Test fun allFourIntentButtonsExistOnce() {
         assertEquals(FireTool.entries.toSet(),FireToolbarPresentation.tools.map { it.first }.toSet())
-        assertEquals(4,FireToolbarPresentation.tools.size)
-        assertEquals("木头",FireToolbarPresentation.tools.last().second)
+        assertEquals(6,FireToolbarPresentation.tools.size)
+        assertEquals(listOf("木头","敲鼓","撒种"),FireToolbarPresentation.tools.takeLast(3).map{it.second})
     }
     @Test fun firstToolHintsAreSingleLinesWithoutCountdowns() {
         val hints=FireTool.entries.map(FireToolbarPresentation::firstHint)
-        assertEquals(4,hints.distinct().size)
+        assertEquals(6,hints.distinct().size)
         assertTrue(hints.all { it.isNotBlank() && '\n' !in it && !Regex("\\d").containsMatchIn(it) })
         for(tool in FireTool.entries.filter { it!=FireTool.OBSERVE })
             assertEquals(FireToolbarPresentation.firstHint(tool),FireToolbarPresentation.hint(camp(),tool,true))

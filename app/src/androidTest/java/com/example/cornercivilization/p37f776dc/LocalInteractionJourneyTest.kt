@@ -32,6 +32,79 @@ class LocalInteractionJourneyTest {
     }
     @Suppress("UNCHECKED_CAST")
     private fun <T> field(owner: Any, name: String): T = owner.javaClass.getDeclaredField(name).let {it.isAccessible=true;it.get(owner) as T}
+    @Test fun rainToPotteryInANewVillage() {
+        val context = instrumentation.targetContext
+        check(context.packageName.endsWith(".qa18.living.acceptance"))
+        context.startActivity(context.packageManager.getLaunchIntentForPackage(context.packageName)!!.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+        await("fresh village ready",90_000) { PrimitivePreviewRuntime.acceptanceInstance.get()?.ready==true }
+        val runtime = requireNotNull(PrimitivePreviewRuntime.acceptanceInstance.get())
+        val effects = field<PrimitiveLocalEffects>(runtime,"localEffects")
+        val sim=effects.simulation
+        val village=effects.living
+        val world=field<Entity>(runtime,"world")
+        lateinit var target:Entity
+        val owner=field<Entity>(runtime,"placementOwner")
+        val content=field<SpatialViewContent>(runtime,"content")
+        fun px(p:LocalInterventionWorld.Point)=content.convertPosition(world.convertPositionTo(Vector3(p.x,0f,p.z),owner),
+            content.localSpatialCoordinateSpace,ViewCoordinateSpace.Local)
+        main {
+            target=world.requireNode("FloodplainTerrain")
+            assertFalse(village.life.river.state.cistern)
+            val p=px(village.ecology.bank)
+            assertTrue(runtime.rainPointer("clay",target,p,true,true))
+            assertTrue(runtime.rainPointer("clay",target,p,false,false))
+        }
+        await("rain exposed workable river mud",20_000) { village.life.river.state.softBank>50f }
+        await("resident delivered blank to stockpile",180_000) { village.life.river.state.blank || village.life.river.state.cistern }
+        main {
+            if(!village.life.river.state.cistern) assertTrue(runtime.castAtTap(target,px(sim.depot),FireTool.WOOD))
+        }
+        await("gift hauled and vessel fired",150_000) { village.life.river.state.cistern && world.requireNode("RainCistern").enabled }
+        main {
+            assertTrue(village.life.journal.counts.containsKey(com.example.cornercivilization.p37f776dc.domain.usecase.VillageEvent.FIRE_CISTERN))
+            Log.i("LocalJourney","fresh village pottery complete; people=${village.residents.size} entries=${village.life.journal.counts}")
+        }
+    }
+
+    @Test fun riverEquipmentReactsToRainAndVillagersLandACatch() {
+        val context = instrumentation.targetContext
+        check(context.packageName.endsWith(".qa18.living.acceptance"))
+        context.startActivity(context.packageManager.getLaunchIntentForPackage(context.packageName)!!.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+        await("village ready", 90_000) { PrimitivePreviewRuntime.acceptanceInstance.get()?.ready == true }
+        val runtime = requireNotNull(PrimitivePreviewRuntime.acceptanceInstance.get())
+        val effects = field<PrimitiveLocalEffects>(runtime,"localEffects")
+        val world = field<Entity>(runtime,"world")
+        val sim = effects.simulation
+        val life = effects.living.life
+        val owner = field<Entity>(runtime,"placementOwner")
+        val content = field<SpatialViewContent>(runtime,"content")
+        main {
+            // Resume an isolated fishing village one tide before its first catch.
+            life.river.restore(com.example.cornercivilization.p37f776dc.domain.usecase.RiverLivelihood.State(
+                cistern=true, trapUses=3, catchProgress=.90f))
+            life.water = .05f
+            val p = sim.depot
+            val px = content.convertPosition(world.convertPositionTo(Vector3(p.x,0f,p.z),owner),content.localSpatialCoordinateSpace,ViewCoordinateSpace.Local)
+            val ground = world.requireNode("FloodplainTerrain")
+            assertTrue(runtime.rainPointer("river",ground,px,true,true))
+            assertTrue(runtime.rainPointer("river",ground,px,false,false))
+            assertTrue(sim.rainAt(p)>.5f)
+        }
+        await("visible cistern takes rain through the terrain gesture",20_000) {
+            world.requireNode("RainCistern").enabled && world.requireNode("RiverFishTrap").enabled && life.water>.35f
+        }
+        await("catch reaches the float",25_000) { world.requireNode("FishTrapFloat").enabled }
+        val event = com.example.cornercivilization.p37f776dc.domain.usecase.VillageEvent.LIFT_FISH_TRAP
+        await("resident reaches shore and lands actual fish",150_000) {
+            life.journal.counts.getOrDefault(event,0)>0 && life.river.state.trapUses==2
+        }
+        main {
+            assertTrue(world.requireNode("RiverFishTrap").enabled)
+            assertTrue(requireNotNull(runtime.chronicle).snapshot().any{it.text.contains("鲜鱼")})
+            Log.i("LocalJourney","river state=${life.river.state} water=${life.water} catch=${life.journal.counts[event]}")
+        }
+    }
+
     @Test fun chronicleRecordsAcceptedToolsAndReactions() {
         val context = instrumentation.targetContext
         context.startActivity(context.packageManager.getLaunchIntentForPackage(context.packageName)!!.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))

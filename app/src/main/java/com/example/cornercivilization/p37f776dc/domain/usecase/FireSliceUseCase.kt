@@ -51,6 +51,7 @@ class FireSliceUseCase {
         }
         FireTool.FIRE -> if (state.phase == FirePhase.WET || state.phase == FirePhase.BURNING) state else ignite(state)
         FireTool.WOOD -> grantWood(state)
+        FireTool.DRUM, FireTool.SEED -> state
     }
 
     private fun ignite(state: FireSliceState) = state.copy(

@@ -1,7 +1,7 @@
 package com.example.cornercivilization.p37f776dc.domain.model
 
 enum class FirePhase { QUIET, APPROACH, KINDLING, BURNING, WET }
-enum class FireTool { OBSERVE, WATER, FIRE, WOOD }
+enum class FireTool { OBSERVE, WATER, FIRE, WOOD, DRUM, SEED }
 enum class ResourcePhase { WAITING, FETCHING, CARRYING, IDLE }
 enum class ShelterPhase { NONE, NEEDED, FETCHING, CARRYING, BUILDING, COMPLETE }
 
@@ -53,6 +53,6 @@ data class FireSliceState(
         require(pendingWood <= 12 && haulingWood in 0..4 && resourceRoom >= 0)
         require(pendingWood.toLong() + haulingWood + storedWood + usedWood == suppliedWood.toLong())
         require((resourcePhase == ResourcePhase.CARRYING) == (haulingWood > 0))
-        require(seenTools in 0..15)
+        require(seenTools in 0 until (1 shl FireTool.entries.size))
     }
 }

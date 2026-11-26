@@ -132,6 +132,7 @@ internal class VillageWildlifeLife(private val world:LocalInterventionWorld,priv
                     val guards=life().people.filter{it.value.warned&&village.residents[it.key]?.distance(b.point)?.let{d->d<.11f}==true}
                     when {
                         guards.size>=2->issue(b,VillageEvent.ELEPHANT_AVOID_GUARD,away(b.point,village.residents.getValue(guards.keys.first())))
+                        village.influence.meadow(b.point)!=null && s.thirst<.6f -> world.wildlife.setOrder(b.id,Order(village.influence.meadow(b.point),"graze"))
                         life().grassBait>.1f&&life().cutGrass!=null->world.wildlife.setOrder(b.id,Order(life().cutGrass,"graze"))
                         calf!=null&&parent==b&&state(calf).thirst>.6f-> {
                             issue(b,VillageEvent.LEAD_CALF_WATER,village.ecology.bank)

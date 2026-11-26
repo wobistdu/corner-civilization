@@ -33,7 +33,7 @@ private object ScrollPigment {
 private const val LINES_PER_PAGE = 5
 
 @Composable
-internal fun VillageScroll(lines: List<VillageChronicle.Line>, open: Boolean) {
+internal fun VillageScroll(lines: List<VillageChronicle.Line>, open: Boolean, title:String="村落见闻") {
     Box(Modifier.size(790.dp, 292.dp)) {
         if (!open) return@Box
         // Pigments of the illustrated scroll, independent of the native control theme.
@@ -62,7 +62,7 @@ internal fun VillageScroll(lines: List<VillageChronicle.Line>, open: Boolean) {
         }
         Column(Modifier.fillMaxSize().padding(horizontal=48.dp, vertical=14.dp)) {
             Row(verticalAlignment=Alignment.CenterVertically) {
-                Text("村落见闻", color=ink, fontFamily=FontFamily.Serif, fontSize=28.sp)
+                Text(title, color=ink, fontFamily=FontFamily.Serif, fontSize=28.sp)
                 Spacer(Modifier.weight(1f))
                 Text(if (archive == null) "新近所记" else "往日所记", color=moss, fontSize=18.sp)
             }

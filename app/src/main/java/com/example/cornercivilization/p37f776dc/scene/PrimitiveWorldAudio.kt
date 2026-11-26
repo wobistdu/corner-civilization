@@ -11,7 +11,7 @@ import kotlin.random.Random
 /** Scene-owned spatial mono sources; bounded loops, species cooldowns and quiet occasional birds. */
 internal class PrimitiveWorldAudio(private val world:Entity,private val events:LocalInterventionWorld) {
     private val root=Entity().apply{setName("WorldSoundscape");world.addChild(this)}
-    private val resources=listOf("rain","fire","ignite","human","mammoth","tiger","birds","steam","build","forage","finish").associateWith {name->AudioResource.load(name,"asset://audio/$name.wav").apply {check(valid){"Missing audio $name"};toGlobal()}}
+    private val resources=listOf("drum","rain","fire","ignite","human","mammoth","tiger","birds","steam","build","forage","finish").associateWith {name->AudioResource.load(name,"asset://audio/$name.wav").apply {check(valid){"Missing audio $name"};toGlobal()}}
     private data class Voice(val owner:Entity,val player:AudioPlayerController,val sound:String,var age:Float=0f,var gain:Float=0f)
     private val loops=mutableMapOf<Int,Voice>();private val shots=mutableListOf<Voice>()
     private val tails=mutableListOf<Voice>()
@@ -31,9 +31,15 @@ internal class PrimitiveWorldAudio(private val world:Entity,private val events:L
     }
     private fun release(v:Voice){v.player.stop();v.player.close();v.owner.destroy(true)}
     private fun shot(sound:String,p:Vector3,gain:Float){if(shots.size<6)play(sound,p,gain)?.let{shots+=it}}
+    private var lastBeat=-1f
     fun update(dt:Float,active:Boolean) {
         if(!active){if(enabled){loops.values.forEach(::release);loops.clear();shots.forEach(::release);shots.clear();tails.forEach(::release);tails.clear();Log.i("WorldAudio","suspended voices=0")};enabled=false;return}
         enabled=true
+        events.village?.influence?.beat?.takeIf{it.at!=lastBeat}?.let{
+            lastBeat=it.at
+            if(shots.size>=6)release(shots.removeAt(0))
+            shot("drum",Vector3(it.point.x,.04f,it.point.z),.85f)
+        }
         shots.toList().forEach{it.age+=dt;if(it.player.isCompleted() || it.age>5f){release(it);shots.remove(it)}}
         cooldown.keys.toList().forEach{cooldown[it]=requireNotNull(cooldown[it])-dt}
         tails.toList().forEach{it.age+=dt;if(it.age>=.4f){release(it);tails.remove(it)}}

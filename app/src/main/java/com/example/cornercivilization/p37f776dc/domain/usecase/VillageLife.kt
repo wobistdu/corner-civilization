@@ -21,6 +21,8 @@ internal class VillageLife(private val world:LocalInterventionWorld,private val 
     val people=linkedMapOf<String,Person>()
     val patches=mutableListOf<Patch>()
     val homes=linkedMapOf<String,Home>()
+    val river = RiverLivelihood(world, village)
+    private val workRules = VillageWorkRules(village, listOf(river.rules, fieldWorkRules(village, this)))
     val journal=VillageJournal()
     /** Directed debt: the receiver remembers the helper. */
     val debts=linkedMapOf<String,Int>()
@@ -88,7 +90,8 @@ internal class VillageLife(private val world:LocalInterventionWorld,private val 
         val debts:Map<String,Int>,val bonds:Map<String,Float>,val cargo:Map<String,Point>,
         val blocked:Map<String,String>,val points:Map<String,Point>,val reservedFor:String?,
         val counts:Map<VillageEvent,Int>,val recent:List<VillageJournal.Entry>,
-        val animals:Map<String,VillageWildlifeLife.State>)
+        val animals:Map<String,VillageWildlifeLife.State>, val river:RiverLivelihood.State = RiverLivelihood.State(),
+        val plantings:List<VillageInfluence.Plot> = emptyList())
     private fun floatFields()=linkedMapOf("water" to ::water,"bankReeds" to ::bankReeds,
         "dampGrain" to ::dampGrain,"preservation" to ::preservation,"stockTurn" to ::stockTurn,
         "weeds" to ::weeds,"pests" to ::pests,"soilHard" to ::soilHard,"soilFertility" to ::soilFertility,
@@ -106,8 +109,9 @@ internal class VillageLife(private val world:LocalInterventionWorld,private val 
         blockedWork.toMap(),buildMap {cutGrass?.let{put("cutGrass",it)};safeTrail?.let{put("safeTrail",it)};spillPoint?.let{put("spillPoint",it)}},
         reservedFor,journal.counts.toMap(),journal.recent.toList(),village.animalLife.states.mapValues {
             it.value.copy(intent=null,goal=null,start=null,elapsed=0f)
-        })
+        }, river.state, village.influence.plots.map{it.copy()})
     fun validate(s:Snapshot) {
+        require(s.plantings.size<=VillageInfluence.MAX_PLOTS && s.plantings.all{ it.point.x.isFinite() && it.point.z.isFinite() && world.navigation.open(it.point) && it.growth in 0f..1f })
         fun resident(id:String)=id.matches(Regex("PrimitiveResident_[0-8]"))
         fun unit(v:Float)=v.isFinite()&&v in 0f..1f
         fun point(p:Point)=p.x.isFinite()&&p.z.isFinite()&&world.navigation.open(p)
@@ -144,6 +148,8 @@ internal class VillageLife(private val world:LocalInterventionWorld,private val 
         debts.clear();debts.putAll(s.debts);bonds.clear();bonds.putAll(s.bonds);cargoMemory.clear();cargoMemory.putAll(s.cargo)
         blockedWork.clear();blockedWork.putAll(s.blocked);reservedFor=s.reservedFor
         cutGrass=s.points["cutGrass"];safeTrail=s.points["safeTrail"];spillPoint=s.points["spillPoint"]
+        river.restore(s.river)
+        village.influence.plots.clear();village.influence.plots.addAll(s.plantings.map{it.copy()})
         journal.restore(s.counts,s.recent)
         village.animalLife.states.clear();s.animals.forEach{(k,v)->village.animalLife.states[k]=v.copy(intent=null,goal=null,start=null,elapsed=0f)}
         companions.clear();retryAt.clear();needRetryAt.clear();deferred.clear();village.jobs.clear()
@@ -172,8 +178,14 @@ internal class VillageLife(private val world:LocalInterventionWorld,private val 
     private fun home(id:String)=village.houses["Shelter_${(id.last().digitToIntOrNull()?:0)/3}"]
     private fun intact(h:LivingVillage.House?)=h!=null&&h.available&&!h.ruined&&h.health>=80f
     private fun completed(name:String)=village.houses[name]?.let{it.available&&!it.ruined&&it.health>=99f}==true
+    internal fun completeRule(id:String, event:VillageEvent, result:String) {
+        village.jobs.remove(id)
+        village.completedTasks++
+        retryAt[id]=clock+1f
+        emit(event,id,result)
+    }
     internal fun emit(e:VillageEvent,id:String,result:String) {
-        if (journal.record(e,id,clock,result)) world.chronicle.villageEvent(e,id,clock)
+        if (journal.record(e,id,clock,result)) { world.chronicle.villageEvent(e,id,clock); village.influence.witnessed(id,e) }
         village.changed()
     }
     fun speed(id:String):Float {
@@ -206,6 +218,7 @@ internal class VillageLife(private val world:LocalInterventionWorld,private val 
     fun advance(dt:Float) {
         if(!enabled)return
         clock+=dt
+        river.advance(dt)
         if(patches.isEmpty())village.sources.forEach{patches+=Patch(it)}
         village.houses.values.forEach { h->
             val m=homes.getOrPut(h.id){Home()}
@@ -335,7 +348,7 @@ internal class VillageLife(private val world:LocalInterventionWorld,private val 
     fun interrupted(id:String,j:LivingVillage.Job,at:Point) {
         if(j.food!=null&&j.carrying)cargoMemory[id]=at
         if(j.kind.startsWith("life_"))person(id).interrupted=true
-        if(j.carrying&&j.food==null&&j.wood==null) {
+        if(j.carrying&&j.event!=VillageEvent.MOULD_CLAY&&j.food==null&&j.wood==null) {
             emit(VillageEvent.SPILL_WATER,id,"避险时水洒在地上")
             val wet=world.wetSpots.firstOrNull{it.point.distance(at)<.02f}
             if(wet!=null)wet.wet=(wet.wet+.2f).coerceAtMost(1f)
@@ -527,12 +540,9 @@ internal class VillageLife(private val world:LocalInterventionWorld,private val 
 
         if(village.agriculture) {
             offer(VillageEvent.SOW_SEEDS,field,60f,seeds>0&&village.ecology.crop<.28f&&!restingSoil)
-            offer(VillageEvent.PULL_WEEDS,field,46f,weeds>.35f)
             offer(VillageEvent.MULCH_FIELD,field,48f,reeds>0&&fieldWater<.2f&&mulch<.3f)
-            offer(VillageEvent.LOOSEN_SOIL,field,43f,soilHard>.45f)
             offer(VillageEvent.DRAIN_FIELD,field,61f,fieldWater>.75f&&drainage<.6f)
             offer(VillageEvent.STAKE_CROP,field,64f,trampled>.25f)
-            offer(VillageEvent.PICK_PESTS,field,44f,pests>.4f)
             offer(VillageEvent.REPLANT_GAP,field,56f,seeds>0&&trampled>.1f&&trampled<=.25f)
             offer(VillageEvent.CHECK_FENCE,village.ecology.sites.getValue("FieldFence"),41f,completed("FieldFence")&&fenceWear>.3f&&fenceWear<.5f)
             offer(VillageEvent.MEND_FENCE,world.depot,63f,completed("FieldFence")&&fenceWear>=.5f&&world.woods.any{it.phase==WoodPhase.STACKED&&it.carrier==null})
@@ -626,6 +636,7 @@ internal class VillageLife(private val world:LocalInterventionWorld,private val 
         // a long trip. Immediate needs and rescue keep their unmodified priority.
         fun score(plan:Plan,distance:Float)=plan.priority-
             if(plan.priority>=80f)0f else minOf(24f,(distance-.08f).coerceAtLeast(0f)*40f)
+        workRules.offer { event, site, priority -> offer(event, site, priority) }
         val ordered=plans.sortedByDescending { score(it,current.distance(it.point)) }
         var selected:LivingVillage.Job?=null
         var selectedScore=Float.NEGATIVE_INFINITY
@@ -670,6 +681,7 @@ internal class VillageLife(private val world:LocalInterventionWorld,private val 
         val event=j.event
         if(j.kind in listOf("foodPickup","foodDelivery"))return false
         if(event==null)return false
+        if(workRules.work(id,j,at))return true
         val p=person(id)
         if(event in moments) {
             val other=j.peer?.let{village.residents[it]}
@@ -951,12 +963,9 @@ internal class VillageLife(private val world:LocalInterventionWorld,private val 
             VillageEvent.SOW_SEEDS,VillageEvent.REPLANT_GAP->{
                 if(seeds>0){seeds--;village.ecology.crop=(village.ecology.crop+.24f).coerceAtMost(1f);trampled=(trampled-.25f).coerceAtLeast(0f);finish("种粮-1；田苗补齐")}else finish("种粮已用完",false)
             }
-            VillageEvent.PULL_WEEDS->{weeds=(weeds-.55f).coerceAtLeast(0f);p.farmSkill=(p.farmSkill+.05f).coerceAtMost(1f);finish("除草降低争水")}
             VillageEvent.MULCH_FIELD->{if(reeds>0){reeds--;mulch=.9f;finish("芦苇-1；覆盖保湿")}else finish("芦苇已用完",false)}
-            VillageEvent.LOOSEN_SOIL->{soilHard=(soilHard-.6f).coerceAtLeast(0f);finish("松土恢复根系生长")}
             VillageEvent.DRAIN_FIELD->{drainage=1f;fieldWater=(fieldWater-.4f).coerceAtLeast(0f);finish("积水排出")}
             VillageEvent.STAKE_CROP->{trampled=(trampled-.5f).coerceAtLeast(0f);village.ecology.crop=(village.ecology.crop+.06f).coerceAtMost(1f);finish("踩倒苗扶起")}
-            VillageEvent.PICK_PESTS->{pests=(pests-.6f).coerceAtLeast(0f);finish("虫害减轻")}
             VillageEvent.CHECK_FENCE->{fenceWear=.5f;finish("发现缺口，转为修补需求")}
             VillageEvent.MEND_FENCE->{
                 if(!j.carrying){if(!carryWood(village.ecology.sites.getValue("FieldFence"),"life_fenceDelivery"))finish("缺少可送木料",false)}

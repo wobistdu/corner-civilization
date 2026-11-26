@@ -54,7 +54,9 @@ internal enum class VillageEvent(val title: String) {
     BIRDS_EAT_SPILL("鸟落地吃遗落粮食"), KEEP_GRASS_REFUGE("留下村外草地分散兽压"),
 
     GREET_NEIGHBOR("遇见邻居挥手招呼"), CHAT_TOGETHER("歇工时面对面聊一会儿"),
-    STRETCH_BREAK("劳动间隙伸展腰背"), EAT_FORAGE("在安全处吃采下的野食");
+    STRETCH_BREAK("劳动间隙伸展腰背"), EAT_FORAGE("在安全处吃采下的野食"),
+    MOULD_CLAY("雨后盘缸坯"), FIRE_CISTERN("烧制接雨缸"),
+    WEAVE_FISH_TRAP("在浅岸编鱼篓"), LIFT_FISH_TRAP("提篓收鱼");
 
     val group: Int get() = if(this==EAT_FORAGE)0 else ordinal / 12
 }

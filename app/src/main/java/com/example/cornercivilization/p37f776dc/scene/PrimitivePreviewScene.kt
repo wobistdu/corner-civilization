@@ -62,9 +62,10 @@ internal fun PrimitivePreviewScene(windowSizePx: IntSize, ui: FireSliceUiState, 
     var runtime by remember { mutableStateOf<PrimitivePreviewRuntime?>(null) }
     val scrollOpen = runtime?.scrollOpen == true
     var scrollLines by remember { mutableStateOf(emptyList<VillageChronicle.Line>()) }
-    LaunchedEffect(runtime, scrollOpen, started) {
+    val watched=runtime?.watchedResident
+    LaunchedEffect(runtime, scrollOpen, watched, started) {
         if (!scrollOpen || !started) return@LaunchedEffect
-        val journal = runtime?.chronicle ?: return@LaunchedEffect
+        val journal = runtime?.displayJournal ?: return@LaunchedEffect
         var revision = -1L
         while (isActive) {
             if (revision != journal.revision) {
@@ -157,12 +158,14 @@ internal fun PrimitivePreviewScene(windowSizePx: IntSize, ui: FireSliceUiState, 
         Box {
             SpatialView(
                 modifier = Modifier.fillMaxSize().onSizeChanged { viewSize = it }.pointerInput(context, ui.tool, active) {
-                    if (ui.tool == FireTool.WATER) {
+                    if (ui.tool == FireTool.WATER || ui.tool==FireTool.SEED) {
                         try {
                             detectSpatialPointerEvent(context = context) { events ->
                                 var consumed = false
                                 if (active) events.forEach { event ->
-                                    consumed = runtime?.rainPointer(event.pointerId.toString(), event.targetedEntity,
+                                    if(ui.tool==FireTool.SEED) consumed = runtime?.seedPointer(event.pointerId.toString(),event.targetedEntity,
+                                        Vector3(event.x,event.y,event.z),event.pressed,event.isDownEvent())==true || consumed
+                                    else consumed = runtime?.rainPointer(event.pointerId.toString(), event.targetedEntity,
                                         Vector3(event.x, event.y, event.z), event.pressed, event.isDownEvent()) == true || consumed
                                 }
                                 consumed
@@ -176,11 +179,11 @@ internal fun PrimitivePreviewScene(windowSizePx: IntSize, ui: FireSliceUiState, 
                 },
                 attachments = {
                     AttachmentPanel(PrimitivePreviewRuntime.SCROLL_PANEL) {
-                        VillageScroll(scrollLines, scrollOpen)
+                        androidx.compose.runtime.key(watched){ VillageScroll(scrollLines, scrollOpen, watched?.let { VillageChronicle.nameOf(it)+"的小记" } ?: "村落见闻") }
                     }
                     AttachmentPanel(PrimitivePreviewRuntime.FOOTER_PANEL) {
                         SceneFooterPanel(onMeasured = { footerSize = it }, content = {
-                            FireSliceToolbar(ui, active && runtime?.ready == true, scrollOpen, { runtime?.toggleScroll() }, { runtime?.castAtHearth(latestUi.tool) }) { onEvent(FireSliceEvent.Select(it)) }
+                            FireSliceToolbar(ui, active && runtime?.ready == true, scrollOpen && watched==null, { runtime?.toggleScroll() }, { runtime?.castAtHearth(latestUi.tool) }) { onEvent(FireSliceEvent.Select(it)) }
                         })
                     }
                 },

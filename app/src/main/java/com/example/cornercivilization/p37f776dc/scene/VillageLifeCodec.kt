@@ -45,10 +45,17 @@ internal object VillageLifeCodec {
         "cargo" to objects(s.cargo,::point),"blocked" to JSONObject(s.blocked),"points" to objects(s.points,::point),
         "reservedFor" to s.reservedFor,"counts" to JSONObject(s.counts.mapKeys{it.key.name}),
         "recent" to array(s.recent){e->obj("event" to e.event.name,"subject" to e.subject,"at" to e.at,"result" to e.result)},
-        "animals" to objects(s.animals,::animal))
+        "animals" to objects(s.animals,::animal),
+        "plantings" to array(s.plantings){p->point(p.point).put("meadow",p.meadow).put("growth",p.growth)},
+        "river" to obj("softBank" to s.river.softBank, "blank" to s.river.blank, "cistern" to s.river.cistern,
+            "trapUses" to s.river.trapUses, "catchProgress" to s.river.catchProgress))
 
     fun decode(j:JSONObject):VillageLife.Snapshot {
         require(j.getInt("schema")==1)
+        val river = if (j.has("river")) j.getJSONObject("river").let {
+            RiverLivelihood.State(it.f("softBank"), it.getBoolean("blank"), it.getBoolean("cistern"),
+                it.getInt("trapUses"), it.f("catchProgress"))
+        } else RiverLivelihood.State()
         return VillageLife.Snapshot(
             map(j.getJSONObject("floats")){_,v->(v as Number).toFloat()},
             map(j.getJSONObject("ints")){_,v->(v as Number).toInt()},
@@ -60,6 +67,6 @@ internal object VillageLifeCodec {
             map(j.getJSONObject("points")){_,v->point(v as JSONObject)},j.nullString("reservedFor"),
             map(j.getJSONObject("counts")){_,v->(v as Number).toInt()}.mapKeys{VillageEvent.valueOf(it.key)},
             array(j.getJSONArray("recent")){e->VillageJournal.Entry(VillageEvent.valueOf(e.getString("event")),e.getString("subject"),e.f("at"),e.getString("result"))},
-            map(j.getJSONObject("animals")){_,v->animal(v as JSONObject)})
+            map(j.getJSONObject("animals")){_,v->animal(v as JSONObject)}, river, if(j.has("plantings"))array(j.getJSONArray("plantings")){p->VillageInfluence.Plot(point(p),p.getBoolean("meadow"),p.f("growth"))} else emptyList())
     }
 }

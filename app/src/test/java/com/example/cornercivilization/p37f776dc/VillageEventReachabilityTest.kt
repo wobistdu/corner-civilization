@@ -46,6 +46,10 @@ internal class VillageEventReachabilityTest(private val event:VillageEvent) {
             v.jobs[who]=LivingVillage.Job("build",house,mutableListOf(),at)
         }
         when(event) {
+            VillageEvent.MOULD_CLAY -> { w.wetSpots += WetSpot(v.ecology.bank,1f); v.residents[id]=v.ecology.bank }
+            VillageEvent.FIRE_CISTERN -> { l.river.restore(RiverLivelihood.State(blank=true)); timber() }
+            VillageEvent.WEAVE_FISH_TRAP -> { l.clock=33f; l.bankReeds=4f; v.ecology.food=2; v.residents[id]=v.ecology.bank }
+            VillageEvent.LIFT_FISH_TRAP -> { l.river.restore(RiverLivelihood.State(trapUses=2,catchProgress=1f)); v.ecology.food=4; v.residents[id]=v.ecology.bank }
             VillageEvent.GREET_NEIGHBOR->{l.clock=30f;p.lonely=.1f;v.residents[peer]=Point(w.depot.x+.04f,w.depot.z)}
             VillageEvent.CHAT_TOGETHER->{l.clock=30f;p.lonely=.5f;v.residents[peer]=Point(w.depot.x+.02f,w.depot.z)}
             VillageEvent.STRETCH_BREAK->{l.clock=30f;p.fatigue=.2f}
@@ -217,6 +221,10 @@ internal class VillageEventReachabilityTest(private val event:VillageEvent) {
         assertTrue("${event.name}: selected=${v.jobs[id]?.event}, stock=${v.ecology.food}, blocked=${l.blockedWork[id]}",(l.journal.counts[event]?:0)>0)
         // 各事件必须改变对应的需求、资源、关系或路线；日志计数本身不算后果。
         when(event){
+            VillageEvent.MOULD_CLAY -> { assertTrue(l.river.state.blank); assertTrue(v.residents.getValue(id).distance(w.depot)<.02f) }
+            VillageEvent.FIRE_CISTERN -> { assertTrue(l.river.state.cistern); assertFalse(l.river.state.blank); assertTrue(w.woods.isEmpty()) }
+            VillageEvent.WEAVE_FISH_TRAP -> { assertEquals(3,l.river.state.trapUses); assertTrue(l.bankReeds<3f) }
+            VillageEvent.LIFT_FISH_TRAP -> { assertEquals(1,l.river.state.trapUses); assertEquals("riverFish",v.foodBundles.single().origin); assertEquals(stock,v.ecology.food) }
             VillageEvent.GREET_NEIGHBOR,VillageEvent.CHAT_TOGETHER->{
                 assertEquals(.025f,l.bonds["$id|$peer"]!!,.0001f)
                 assertTrue(l.person(id).lonely<before.people.getValue(id).lonely)

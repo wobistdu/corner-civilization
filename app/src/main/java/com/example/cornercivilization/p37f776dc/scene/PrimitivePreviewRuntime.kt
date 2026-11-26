@@ -59,9 +59,24 @@ internal class PrimitivePreviewRuntime private constructor(
         private set
     val chronicle get() = localEffects?.simulation?.chronicle
 
+    var watchedResident by androidx.compose.runtime.mutableStateOf<String?>(null)
+        private set
+    val displayJournal get()=if(watchedResident==null) chronicle else localEffects?.living?.influence?.diary
+    private fun follow(id:String):Boolean {
+        val watch=localEffects?.living?.influence ?: return false
+        if(!watch.follow(id))return false
+        watchedResident=watch.followed
+        scrollOpen=watchedResident!=null
+        scrollOwner.enabled=scrollOpen
+        return true
+    }
     fun toggleScroll() {
         if (ready && !disposed) {
-            scrollOpen = !scrollOpen
+            if(watchedResident!=null){
+                localEffects?.living?.influence?.stopFollowing()
+                watchedResident=null
+                scrollOpen=true
+            } else scrollOpen = !scrollOpen
             scrollOwner.enabled = scrollOpen
             Log.i("VillageScroll", "open=$scrollOpen entries=${chronicle?.snapshot()?.size}")
         }
@@ -151,6 +166,14 @@ internal class PrimitivePreviewRuntime private constructor(
                 val target = world.requireNode(name)
                 target.installVisualBoundsTarget()
                 inputTargets[target.id] = name
+            }
+            for(i in 0..8) {
+                val id="PrimitiveResident_$i"
+                val actor=world.requireNode(id)
+                val bounds=actor.getVisualBounds(actor,recursive=true,enabledOnly=true)
+                check(!bounds.isEmpty()){"missing resident bounds: $id"}
+                actor.installBoxTarget(bounds.size*1.2f,bounds.center)
+                inputTargets[actor.id]=id
             }
             inputTargets[world.requireNode("Campfire").id] = "ground"
             Log.i("LocalInput", "targets ready terrain=static-mesh houses=4 coordinate=view-local-pixels-to-world-metres")
@@ -346,7 +369,7 @@ internal class PrimitivePreviewRuntime private constructor(
         // Both attachments use the same dp density. Keep the scroll behind the far bank,
         // facing the player, with enough floor clearance for trees and roof silhouettes.
         val scrollWidth = uiBase.size.x * 790f / 640f
-        val scrollHeight = uiBase.size.y * 292f / 64f
+        val scrollHeight = uiBase.size.x * 292f / 640f
         val scrollScale = minOf(safe.x * 1.55f / scrollWidth, safe.y * .78f / scrollHeight)
         val extent = Vector3(scrollWidth * scrollScale / 2f, scrollHeight * scrollScale / 2f, 0f)
         val center = Vector3(finalBody.center.x,
@@ -397,8 +420,10 @@ internal class PrimitivePreviewRuntime private constructor(
     val resourceWorkersReady: Boolean get() = ready && residents.resourceWorkersReady
     val resourceTask get() = fireState.resourcePhase
     fun castAtTap(hit: Entity?, pixels: Vector3, tool: FireTool): Boolean {
-        if (!ready || disposed || tool == FireTool.OBSERVE || hit == null) return false
+        if (!ready || disposed || hit == null) return false
         val target = hit.logicalTarget(inputTargets) ?: if (fire.matches(hit)) "ground" else return false
+        if(target.startsWith("PrimitiveResident_"))return follow(target)
+        if(tool==FireTool.OBSERVE)return false
         // SDK 6.2.8 does not apply the destination Entity transform here.
         // Convert pixels to view metres first, then explicitly invert the fitted hierarchy.
         val viewPoint = content.convertPosition(pixels, ViewCoordinateSpace.Local, content.localSpatialCoordinateSpace)
@@ -407,12 +432,42 @@ internal class PrimitivePreviewRuntime private constructor(
         return localEffects?.cast(tool, point, target.takeUnless { it == "ground" }) == true
     }
 
+    private val lastSeedSample=mutableMapOf<String,com.example.cornercivilization.p37f776dc.domain.usecase.LocalInterventionWorld.Point>()
+    private val seedStrokes=mutableMapOf<String,MutableList<com.example.cornercivilization.p37f776dc.domain.usecase.LocalInterventionWorld.Point>>()
+    fun seedPointer(pointer:String,hit:Entity?,pixels:Vector3,pressed:Boolean,down:Boolean):Boolean {
+        val effects=localEffects ?: return false
+        if(!ready || disposed)return false
+        val target=hit?.logicalTarget(inputTargets)
+        if(down && pressed && target?.startsWith("PrimitiveResident_")==true)return follow(target)
+        if(down && pressed && target=="ground")seedStrokes[pointer]=mutableListOf()
+        val stroke=seedStrokes[pointer] ?: return false
+        if(target=="ground"){
+            val view=content.convertPosition(pixels,ViewCoordinateSpace.Local,content.localSpatialCoordinateSpace)
+            val at=world.convertPositionFrom(view,placementOwner)
+            val point=com.example.cornercivilization.p37f776dc.domain.usecase.LocalInterventionWorld.Point(at.x,at.z)
+            if(effects.canSow(point)) {
+                val previous=lastSeedSample.put(pointer,point) ?: point
+                val steps=kotlin.math.ceil(previous.distance(point)/.018f).toInt().coerceIn(1,48)
+                for(i in 1..steps){
+                    if(stroke.size>=12)break
+                    val t=i.toFloat()/steps
+                    val sample=point.copy(x=previous.x+(point.x-previous.x)*t,z=previous.z+(point.z-previous.z)*t)
+                    if(effects.canSow(sample) && stroke.none{it.distance(sample)<.019f})stroke+=sample
+                }
+            }else lastSeedSample.remove(pointer)
+        }
+        if(target!="ground")lastSeedSample.remove(pointer)
+        if(!pressed){effects.living.influence.plant(stroke);seedStrokes.remove(pointer);lastSeedSample.remove(pointer)}
+        effects.seedPreview=seedStrokes.values.flatten().take(12)
+        return true
+    }
     /** Pointer ownership prevents a release from creating a second rain patch. */
     fun rainPointer(pointer: String, hit: Entity?, pixels: Vector3, pressed: Boolean, down: Boolean): Boolean {
         if (!ready || disposed) return false
         val target = hit?.logicalTarget(inputTargets) ?: if (fire.matches(hit)) "ground" else null
         val viewPoint = content.convertPosition(pixels, ViewCoordinateSpace.Local, content.localSpatialCoordinateSpace)
         val point = world.convertPositionFrom(viewPoint, placementOwner)
+        if(down && pressed && target?.startsWith("PrimitiveResident_")==true)return follow(target)
         val house = target?.takeUnless { it == "ground" }
         if (down && pressed && pointer !in rainPointers) {
             if (target == null) return false // Do not capture toolbar or background presses.
@@ -431,6 +486,7 @@ internal class PrimitivePreviewRuntime private constructor(
     }
 
     fun cancelRainPointers() {
+        lastSeedSample.clear();seedStrokes.clear();localEffects?.seedPreview=emptyList()
         rainPointers.values.forEach { localEffects?.endHeldRain(it, cancelled=true) }
         if (rainPointers.isNotEmpty()) Log.i("RainDrag", "cancel pending=${rainPointers.size}")
         rainPointers.clear()

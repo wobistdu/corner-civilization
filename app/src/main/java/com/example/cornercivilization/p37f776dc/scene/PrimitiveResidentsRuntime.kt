@@ -228,9 +228,16 @@ internal class PrimitiveResidentsRuntime(
             // A blocked traveller can be stationary with a future work event.
             // Only the work clock proves the body actually reached its worksite.
             val working=lifeJob?.path?.isEmpty()==true&&lifeJob.elapsed>0f
+            val listening=local?.living?.influence?.looking(actor.id)
             val peer=lifeJob?.peer?.let{local?.living?.residents?.get(it)}
             val lifeAction=when {
+                lifeJob?.kind=="drumGather" && actor.asset.clipNames.containsKey(PrimitiveActivity.SIT_REST)->PrimitiveActivity.SIT_REST
+                lifeJob?.kind=="drumGather"->PrimitiveActivity.TALK
+                lifeJob?.kind=="pickSeedFruit"->PrimitiveActivity.GATHER
                 lifeEvent==null->null
+                lifeEvent==VillageEvent.FIRE_CISTERN->PrimitiveActivity.TEND_FIRE
+                lifeEvent==VillageEvent.WEAVE_FISH_TRAP->PrimitiveActivity.LASH_ROOF
+                lifeEvent==VillageEvent.MOULD_CLAY || lifeEvent==VillageEvent.LIFT_FISH_TRAP->PrimitiveActivity.GATHER
                 lifeEvent==VillageEvent.SLEEP_HOME && lifeJob.house in local?.living?.restSeats.orEmpty() &&
                     actor.asset.clipNames.containsKey(PrimitiveActivity.SIT_REST)->PrimitiveActivity.SIT_REST
                 lifeEvent in setOf(VillageEvent.EAT_FORAGE,VillageEvent.EAT_STOCK,VillageEvent.RATION_MEAL)->PrimitiveActivity.EAT
@@ -247,8 +254,15 @@ internal class PrimitiveResidentsRuntime(
                 response != null -> {
                     val dx=response.point.x-current.x;val dz=response.point.z-current.z
                     val speed=if(response.moving && deltaSeconds>0f) kotlin.math.hypot(dx,dz)/deltaSeconds else 0f
+                    val walkYaw=if(response.moving) kotlin.math.atan2(dx,dz)*180f/kotlin.math.PI.toFloat() else actor.owner.transform().eulerAngles.yaw
+                    val toward=listening ?: peer
+                    val facing=if(toward==null)walkYaw else {
+                        val look=kotlin.math.atan2(toward.x-current.x,toward.z-current.z)*180f/kotlin.math.PI.toFloat()
+                        val turn=(look-walkYaw+540f)%360f-180f
+                        if(response.moving && listening!=null)walkYaw+turn.coerceIn(-22f,22f) else if(response.moving)walkYaw else look
+                    }
                     PrimitiveResidentPose(response.point.x,response.point.z,
-                        if(working && lifeAction==PrimitiveActivity.SIT_REST)0f else if(response.moving) kotlin.math.atan2(dx,dz)*180f/kotlin.math.PI.toFloat() else if(peer!=null)kotlin.math.atan2(peer.x-current.x,peer.z-current.z)*180f/kotlin.math.PI.toFloat()else actor.owner.transform().eulerAngles.yaw,
+                        if(working && lifeAction==PrimitiveActivity.SIT_REST)0f else facing,
                         if(!response.moving&&working&&
                             lifeAction in setOf(PrimitiveActivity.EAT,PrimitiveActivity.DRINK)) requireNotNull(lifeAction)
                         else if(response.carrying) PrimitiveActivity.CARRY
